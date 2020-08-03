@@ -65,4 +65,4 @@ print('')
 
 print('| Labbox-ephys feed |')
 print('| ----------------- |')
-print(f'| {x.get_uri()} |')
+print(f'| [{x.get_uri()}](http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default/?feed={x.get_uri()}) |')
