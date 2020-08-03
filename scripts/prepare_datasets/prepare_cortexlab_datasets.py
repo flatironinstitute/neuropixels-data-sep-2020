@@ -6,8 +6,8 @@ import kachery_p2p as kp
 
 from neuropixels_data_sep_2020 import cortexlab_create_recording_object, create_subrecording_object
 
-jc = hi.JobCache(use_tempdir=True)
-# jc = None
+# jc = hi.JobCache(use_tempdir=True)
+jc = None
 
 compute_resource_uri = 'feed://82a4286f85b50866c290fe5650bbe52c507362aee420ba0185b3d9c7fa638da9?name=ccmlin008.flatironinstitute.org'
 
