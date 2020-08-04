@@ -18,7 +18,7 @@ You can interact with the data in various ways
 The following recordings were generated using [prepare_datasets.py](./scripts/prepare_datasets/prepare_datasets.py).
 
 <!-- prepare_recording.py -->
-[View in browser (labbox-ephys)](http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default?sha1://5782e19577ef66994d5ebffddf92ac00d41a8bae/feed.json)
+[View in browser (labbox-ephys)](http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default?feed=sha1://5782e19577ef66994d5ebffddf92ac00d41a8bae/feed.json)
 
 | Name  | Recording object |
 |------ | ---------------- |

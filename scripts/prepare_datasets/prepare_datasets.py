@@ -36,7 +36,7 @@ finally:
 aws_url = 'http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default'
 
 print('')
-print(f'[View in browser (labbox-ephys)]({aws_url}?{x.get_uri()})')
+print(f'[View in browser (labbox-ephys)]({aws_url}?feed={x.get_uri()})')
 
 print('')
 print('| Name  | Recording object |')
