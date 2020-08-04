@@ -1,11 +1,11 @@
 **Note**: This repo is in preparation
 
 # neuropixels-data-sep-2020
-Example neuropixels datasets for purposes of developing spike sorting algorithms
+Example neuropixels datasets for the purpose of developing and optimizing spike sorting algorithms.
 
 ## Overview
 
-This repository contains links to some ephys recordings using neuropixels probes.
+This repository contains links to some ephys recordings using neuropixels probes together with curated spike sorting results. It also contains two recordings with known imposed drift and two hybrid pseudo-ground truth neuropixels recordings. These may be used to evaluate the performance of spike sorting methods.
 
 You can interact with the data in various ways
 
@@ -22,12 +22,16 @@ The following recordings were generated using [prepare_datasets.py](./scripts/pr
 
 | Name  | Recording object |
 |------ | ---------------- |
-| cortexlab-single-phase-3 (full) | sha1://9ed81d3c060786936433103ac114723f8f3bdf60/cortexlab-single-phase-3.json
-| cortexlab-single-phase-3 (ch 0-7, 10 sec) | sha1://2c3c4147aa4b414b6abfeced463aace389f128c2/cortexlab-single-phase-3-ch0-7-10sec.json
-| cortexlab-single-phase-3 (10 sec) | sha1://2c3c4147aa4b414b6abfeced463aace389f128c2/cortexlab-single-phase-3-10sec.json
-| sieglelab_mouse419112_probeE (full) | sha1://cbb77e0b79223ce5117bd36d7a7ea98ca0cd6454/sieglelab_mouse419112_probeE.json
-| sieglelab_mouse419112_probeE (ch 0-7, 10 sec) | sha1://595d78d1e1a61c12c437afedd808b565cce82e5e/sieglelab_mouse419112_probeE-ch0-7-10sec.json
-| sieglelab_mouse419112_probeE (10 sec) | sha1://0a675979c1192d706b79035819da111c783ff018/sieglelab_mouse419112_probeE-10sec.json
+| cortexlab-single-phase-3 (full) | sha1://9ed81d3c060786936433103ac114723f8f3bdf60/cortexlab-single-phase-3.json |
+| cortexlab-single-phase-3 (ch 0-7, 10 sec) | sha1://2c3c4147aa4b414b6abfeced463aace389f128c2/cortexlab-single-phase-3-ch0-7-10sec.json |
+| cortexlab-single-phase-3 (10 sec) | sha1://2c3c4147aa4b414b6abfeced463aace389f128c2/cortexlab-single-phase-3-10sec.json |
+| cortexlab-imposed-drift-1 | ... |
+| cortexlab-imposed-drift-2 | ... |
+| sieglelab_mouse419112_probeE (full) | sha1://cbb77e0b79223ce5117bd36d7a7ea98ca0cd6454/sieglelab_mouse419112_probeE.json |
+| sieglelab_mouse419112_probeE (ch 0-7, 10 sec) | sha1://595d78d1e1a61c12c437afedd808b565cce82e5e/sieglelab_mouse419112_probeE-ch0-7-10sec.json |
+| sieglelab_mouse419112_probeE (10 sec) | sha1://0a675979c1192d706b79035819da111c783ff018/sieglelab_mouse419112_probeE-10sec.json |
+| sieglelab_hybride_1 (full) | ... |
+| sieglelab_hybride_2 (full) | ... |
 <!--  -->
 
 ## Loading into Python and exporting to various formats
@@ -82,11 +86,11 @@ You can create subextractors as above, and export to any of the
 ```python
 import spikeextractors as se
 
-recording2 = se.SubRecordingExtractor(
-    parent_recording=recording,
-    channel_ids=[0, 1, 2, 3],
-    start_frame=0, end_frame=5000
-)
+# Example export to raw binary .dat
+se.BinDatRecordingExtractor.write_recording(recording, '/output/file.dat')
+
+# Example export to .nwb format
+se.NwbRecordingExtractor.write_recording(recording, '/output/file.dat')
 ```
 
 ## Data from Nick Steinmetz
@@ -97,7 +101,20 @@ Single Phase 3 dataset source data: http://data.cortexlab.net/singlePhase3
 
 ## Data from Josh Siegle
 
-[Info about sieglelab_mouse419112_probeE goes here]
+Notes about the sieglelab curated sorting output:
+
+Selected units based on the following criteria:
+```
+ISI violations < 0.01
+amplitude cutoff < 0.01
+presence ratio >= 0.99
+nearest-neighbors hit rate > 0.96
+SNR > 3.0
+```
+
+Then manually inspected each one to confirm its quality.
+
+There were a total of 76 high-quality units across both datasets.
 
 <!-- * mouse419112_probeE
     - curated_unit_times.npy: sha1://57029ae68643881f5d4015397be87ba0d4815b52/curated_unit_times.npy
