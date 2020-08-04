@@ -10,8 +10,8 @@ This repository contains links to some ephys recordings using neuropixels probes
 You can interact with the data in various ways
 
 * Visualize data within the web browser (labbox-ephys links below)
-* Downloading files from their original source
-* Loading data directly into Python SpikeInterface objects (using a peer-to-peer network)
+* Downloading files from their original source (where available)
+* Loading data directly into Python [SpikeInterface](https://github.com/SpikeInterface) objects (using [kachery-p2p](https://github.com/flatironinstitute/kachery-p2p))
 
 ## Datasets
 
@@ -32,7 +32,7 @@ The following recordings were generated using [prepare_datasets.py](./scripts/pr
 
 ## Loading into Python and exporting to various formats
 
-To load the data into [SpikeInterface](https://github.com/SpikeInterface) recording extractors, you must be running a kachery-p2p daemon on the flatiron1 channel. [Instructions for this are here](https://github.com/flatironinstitute/kachery-p2p).
+To load the data into [SpikeInterface](https://github.com/SpikeInterface) recording extractors, you must be running a kachery-p2p daemon on the flatiron1 channel. [See these instructions.](https://github.com/flatironinstitute/kachery-p2p)
 
 ```python
 from neuropixels_data_sep_2020 import LabboxEphysRecordingExtractor
