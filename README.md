@@ -20,19 +20,19 @@ The following recordings were generated using [prepare_datasets.py](./scripts/pr
 <!-- prepare_recording.py -->
 [View in browser (labbox-ephys)](http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default?feed=sha1://5782e19577ef66994d5ebffddf92ac00d41a8bae/feed.json)
 
-| Name  | Recording object |
-|------ | ---------------- |
-| cortexlab-single-phase-3 (full) | sha1://9ed81d3c060786936433103ac114723f8f3bdf60/cortexlab-single-phase-3.json |
-| cortexlab-single-phase-3 (ch 0-7, 10 sec) | sha1://2c3c4147aa4b414b6abfeced463aace389f128c2/cortexlab-single-phase-3-ch0-7-10sec.json |
-| cortexlab-single-phase-3 (10 sec) | sha1://2c3c4147aa4b414b6abfeced463aace389f128c2/cortexlab-single-phase-3-10sec.json |
+| Name  | Description |
+|------ | ----------- |
+| cortexlab-single-phase-3 (full) |  ... |
+| cortexlab-single-phase-3 (ch 0-7, 10 sec) |  ... |
+| cortexlab-single-phase-3 (10 sec) | ... |
 | cortexlab-imposed-drift-1 | ... |
 | cortexlab-imposed-drift-2 | ... |
-| sieglelab_mouse419112_probeE (full) | sha1://cbb77e0b79223ce5117bd36d7a7ea98ca0cd6454/sieglelab_mouse419112_probeE.json |
-| sieglelab_mouse419112_probeE (ch 0-7, 10 sec) | sha1://595d78d1e1a61c12c437afedd808b565cce82e5e/sieglelab_mouse419112_probeE-ch0-7-10sec.json |
-| sieglelab_mouse419112_probeE (10 sec) | sha1://0a675979c1192d706b79035819da111c783ff018/sieglelab_mouse419112_probeE-10sec.json |
+| sieglelab_mouse419112_probeE (full) |  ... |
+| sieglelab_mouse419112_probeE (ch 0-7, 10 sec) |  ... |
+| sieglelab_mouse419112_probeE (10 sec) |  ... |
 | sieglelab_hybride_1 (full) | ... |
 | sieglelab_hybride_2 (full) | ... |
-<!--  -->
+<!-- -->
 
 ## Loading into Python and exporting to various formats
 

@@ -2,14 +2,18 @@
 
 import hither as hi
 import kachery_p2p as kp
+import json
 import os
 import sys
 from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_sieglelab_datasets
 
-# jc = hi.JobCache(use_tempdir=True)
-jc = None
-
+known_recordings_file = "known_recordings.json"
+aws_url = 'http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default'
 compute_resource_uri = 'feed://82a4286f85b50866c290fe5650bbe52c507362aee420ba0185b3d9c7fa638da9?name=ccmlin008.flatironinstitute.org'
+
+jc = hi.JobCache(use_tempdir=True)
+#jc = None
+
 
 with hi.RemoteJobHandler(uri=compute_resource_uri) as jh:
     with hi.Config(job_handler=jh, container=True, job_cache=jc):
@@ -33,16 +37,17 @@ try:
 finally:
     f.delete()
 
-aws_url = 'http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default'
+with open(known_recordings_file, 'w') as fp:
+    json.dump(le_recordings, fp)
 
 print('')
 print(f'[View in browser (labbox-ephys)]({aws_url}?feed={x.get_uri()})')
 
 print('')
-print('| Name  | Recording object |')
-print('|------ | ---------------- |')
+print('| Name  | Description |')
+print('|------ | ----------- |')
 for le_recording in le_recordings:
-    print(f'| {le_recording["recordingLabel"]} | {le_recording["recordingPath"]}')
+    print(f'| {le_recording["recordingLabel"]} | Placeholder for {le_recording["recordingId"]} |')
 print('')
 
 
