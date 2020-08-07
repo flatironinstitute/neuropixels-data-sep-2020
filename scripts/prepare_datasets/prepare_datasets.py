@@ -4,10 +4,11 @@ import hither as hi
 import kachery_p2p as kp
 import json
 import os
+from pathlib import Path
 import sys
-from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_sieglelab_datasets
+from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_sieglelab_datasets, get_recordings_file_path
 
-known_recordings_file = "known_recordings.json"
+known_recordings_file = get_recordings_file_path()
 aws_url = 'http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default'
 compute_resource_uri = 'feed://82a4286f85b50866c290fe5650bbe52c507362aee420ba0185b3d9c7fa638da9?name=ccmlin008.flatironinstitute.org'
 
