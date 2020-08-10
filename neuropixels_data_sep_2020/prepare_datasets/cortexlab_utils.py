@@ -8,13 +8,22 @@ from ._listify_ndarray import _listify_ndarray
 
 @hi.function('cortexlab_create_recording_object', '0.1.1')
 @hi.container('docker://magland/labbox-ephys-processing:latest')
-def cortexlab_create_recording_object(dirname, bin_fname, raw_num_channels, samplerate):
-    dd = kp.read_dir(dirname)
-    bin_sha1 = dd['files'][bin_fname]['sha1']
-    bin_size = dd['files'][bin_fname]['size']
-    bin_uri = f'sha1://{bin_sha1}/raw.bin'
-    X_channel_map = kp.load_npy(dirname + '/channel_map.npy')
-    X_channel_positions = kp.load_npy(dirname + '/channel_positions.npy')
+def cortexlab_create_recording_object(
+    bin_uri,
+    bin_size, # Later kachery-p2p will allow us to get this information from bin_uri
+    channel_map_npy_uri,
+    channel_positions_npy_uri,
+    raw_num_channels,
+    samplerate
+):
+    # dd = kp.read_dir(dirname)
+    # bin_sha1 = dd['files'][bin_fname]['sha1']
+    # bin_size = dd['files'][bin_fname]['size']
+    # bin_uri = f'sha1://{bin_sha1}/raw.bin'
+    X_channel_map = kp.load_npy(channel_map_npy_uri)
+    X_channel_positions = kp.load_npy(channel_positions_npy_uri)
+    # X_channel_map = kp.load_npy(dirname + '/channel_map.npy')
+    # X_channel_positions = kp.load_npy(dirname + '/channel_positions.npy')
     channel_map = dict()
     channel_ids = [ii for ii in range(len(X_channel_map))]
     for id in channel_ids:

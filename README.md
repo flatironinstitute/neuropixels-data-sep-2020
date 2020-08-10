@@ -18,20 +18,16 @@ You can interact with the data in various ways
 The following recordings were generated using [prepare_datasets.py](./scripts/prepare_datasets/prepare_datasets.py).
 
 <!-- prepare_recording.py -->
-[View in browser (labbox-ephys)](http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default?feed=sha1://5782e19577ef66994d5ebffddf92ac00d41a8bae/feed.json)
+[View in browser (labbox-ephys)](http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default?feed=sha1://47e788e4d4f9e27e7f587cb9278320d40441397a/feed.json)
 
 | Name  | Description |
 |------ | ----------- |
-| cortexlab-single-phase-3 (full) |  ... |
-| cortexlab-single-phase-3 (ch 0-7, 10 sec) |  ... |
-| cortexlab-single-phase-3 (10 sec) | ... |
-| cortexlab-imposed-drift-1 | ... |
-| cortexlab-imposed-drift-2 | ... |
-| sieglelab_mouse419112_probeE (full) |  ... |
-| sieglelab_mouse419112_probeE (ch 0-7, 10 sec) |  ... |
-| sieglelab_mouse419112_probeE (10 sec) |  ... |
-| sieglelab_hybride_1 (full) | ... |
-| sieglelab_hybride_2 (full) | ... |
+| cortexlab-single-phase-3 (full) | Placeholder for cortexlab-single-phase-3 |
+| cortexlab-single-phase-3 (ch 0-7, 10 sec) | Placeholder for cortexlab-single-phase-3-ch0-7.10sec |
+| cortexlab-single-phase-3 (10 sec) | Placeholder for cortexlab-single-phase-3.10sec |
+| sieglelab_mouse419112_probeE (full) | Placeholder for sieglelab_mouse419112_probeE |
+| sieglelab_mouse419112_probeE (ch 0-7, 10 sec) | Placeholder for sieglelab_mouse419112_probeE-ch0-7.10sec |
+| sieglelab_mouse419112_probeE (10 sec) | Placeholder for sieglelab_mouse419112_probeE-10sec |
 <!-- -->
 
 ## Loading into Python and exporting to various formats
