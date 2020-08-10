@@ -18,21 +18,22 @@ You can interact with the data in various ways
 The following recordings were generated using [prepare_datasets.py](./scripts/prepare_datasets/prepare_datasets.py).
 
 <!-- prepare_recording.py -->
-[View in browser (labbox-ephys)](http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default?feed=sha1://b0ed9805da7a76c4ad15de604c849f6bae1793c7/feed.json)
+[View in browser (labbox-ephys)](http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default?feed=sha1://4325e139682e025e69d3b6a0bf250c1fb28482a9/feed.json)
 
 | Recording  | Description |
 |------ | ----------- |
 | cortexlab-single-phase-3 (full) | Placeholder for cortexlab-single-phase-3 |
 | cortexlab-single-phase-3 (ch 0-7, 10 sec) | Placeholder for cortexlab-single-phase-3-ch0-7.10sec |
 | cortexlab-single-phase-3 (10 sec) | Placeholder for cortexlab-single-phase-3.10sec |
-| sieglelab_mouse419112_probeE (full) | Placeholder for sieglelab_mouse419112_probeE |
-| sieglelab_mouse419112_probeE (ch 0-7, 10 sec) | Placeholder for sieglelab_mouse419112_probeE-ch0-7.10sec |
-| sieglelab_mouse419112_probeE (10 sec) | Placeholder for sieglelab_mouse419112_probeE-10sec |
+| allen_mouse419112_probeE (full) | Placeholder for allen_mouse419112_probeE |
+| allen_mouse419112_probeE (ch 0-7, 10 sec) | Placeholder for allen_mouse419112_probeE-ch0-7.10sec |
+| allen_mouse419112_probeE (10 sec) | Placeholder for allen_mouse419112_probeE-10sec |
 
 
 | Sorting  | Description |
 |------ | ----------- |
 | cortexlab-single-phase-3 Curated | Placeholder for cortexlab-single-phase-3:curated |
+
 <!-- -->
 
 ## Loading into Python and exporting to various formats
@@ -44,7 +45,7 @@ from neuropixels_data_sep_2020 import LabboxEphysRecordingExtractor
 import spikeextractors as se
 
 # Replace this with the desired recording URI from above
-recording_uri = 'sha1://595d78d1e1a61c12c437afedd808b565cce82e5e/sieglelab_mouse419112_probeE-ch0-7-10sec.json'
+recording_uri = 'sha1://595d78d1e1a61c12c437afedd808b565cce82e5e/allen_mouse419112_probeE-ch0-7-10sec.json'
 # If the files are not already on your computer
 # then you need to run a kachery-p2p daemon
 # on the flatiron1 channel.
@@ -102,7 +103,7 @@ Single Phase 3 dataset source data: http://data.cortexlab.net/singlePhase3
 
 ## Data from Josh Siegle
 
-Notes about the sieglelab curated sorting output:
+Notes about the Allen Institute curated sorting output:
 
 Selected units based on the following criteria:
 ```

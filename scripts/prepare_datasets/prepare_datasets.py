@@ -6,7 +6,7 @@ import json
 import os
 from pathlib import Path
 import sys
-from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_sieglelab_datasets, get_recordings_file_path
+from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_allen_datasets, get_recordings_file_path
 
 known_recordings_file = get_recordings_file_path()
 aws_url = 'http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default'
@@ -19,7 +19,7 @@ jc = hi.JobCache(use_tempdir=True)
 with hi.RemoteJobHandler(uri=compute_resource_uri) as jh:
     with hi.Config(job_handler=jh, container=True, job_cache=jc):
         le_recordings1, le_sortings1 = prepare_cortexlab_datasets()
-        le_recordings2 = prepare_sieglelab_datasets()
+        le_recordings2 = prepare_allen_datasets()
 
 le_recordings = le_recordings1 + le_recordings2
 le_sortings = le_sortings1
