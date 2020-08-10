@@ -40,6 +40,7 @@ def _try_mda_create_object(arg: Union[str, dict], samplerate=None) -> Union[None
     return None
 
 def _create_object_for_arg(arg: Union[str, dict], samplerate=None) -> Union[dict, None]:
+    print('---- debug1')
     # check to see if it already has the sorting_format field. If so, just return arg
     if (isinstance(arg, dict)) and ('sorting_format' in arg):
         return arg
@@ -55,9 +56,10 @@ def _create_object_for_arg(arg: Union[str, dict], samplerate=None) -> Union[dict
     # if arg is a string ending with .json then replace arg by the object
     if (isinstance(arg, str)) and (arg.endswith('.json')):
         path = arg
-        arg = kp.load_object(path)
-        if arg is None:
+        obj = kp.load_object(path)
+        if obj is None:
             raise Exception(f'Unable to load object: {path}')
+        return obj
     
     # See if it has format 'mda'
     obj = _try_mda_create_object(arg, samplerate=samplerate)
@@ -82,6 +84,14 @@ class LabboxEphysSortingExtractor(se.SortingExtractor):
             firings_path = kp.load_file(data['firings'])
             assert firings_path is not None, f'Unable to load firings file: {data["firings"]}'
             self._sorting: se.SortingExtractor = MdaSortingExtractor(firings_file=firings_path, samplerate=data['samplerate'])
+        elif sorting_format == 'npy1':
+            times_npy = kp.load_npy(data['times_npy_uri'])
+            labels_npy = kp.load_npy(data['labels_npy_uri'])
+            samplerate = data['samplerate']
+            S = se.NumpySortingExtractor()
+            S.set_sampling_frequency(samplerate)
+            S.set_times_labels(times_npy.ravel(), labels_npy.ravel())
+            self._sorting = S            
         else:
             raise Exception(f'Unexpected sorting format: {sorting_format}')
 

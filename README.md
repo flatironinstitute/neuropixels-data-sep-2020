@@ -18,9 +18,9 @@ You can interact with the data in various ways
 The following recordings were generated using [prepare_datasets.py](./scripts/prepare_datasets/prepare_datasets.py).
 
 <!-- prepare_recording.py -->
-[View in browser (labbox-ephys)](http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default?feed=sha1://47e788e4d4f9e27e7f587cb9278320d40441397a/feed.json)
+[View in browser (labbox-ephys)](http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default?feed=sha1://0acd8a8f10b5e5b7df39057d0eba004bac323e0d/feed.json)
 
-| Name  | Description |
+| Recording  | Description |
 |------ | ----------- |
 | cortexlab-single-phase-3 (full) | Placeholder for cortexlab-single-phase-3 |
 | cortexlab-single-phase-3 (ch 0-7, 10 sec) | Placeholder for cortexlab-single-phase-3-ch0-7.10sec |
@@ -28,6 +28,11 @@ The following recordings were generated using [prepare_datasets.py](./scripts/pr
 | sieglelab_mouse419112_probeE (full) | Placeholder for sieglelab_mouse419112_probeE |
 | sieglelab_mouse419112_probeE (ch 0-7, 10 sec) | Placeholder for sieglelab_mouse419112_probeE-ch0-7.10sec |
 | sieglelab_mouse419112_probeE (10 sec) | Placeholder for sieglelab_mouse419112_probeE-10sec |
+
+
+| Sorting  | Description |
+|------ | ----------- |
+| cortexlab-single-phase-3 Curated | Placeholder for cortexlab-single-phase-3:curated |
 <!-- -->
 
 ## Loading into Python and exporting to various formats

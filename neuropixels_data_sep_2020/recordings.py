@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 from typing import List, Any
 
-from .extractors import LabboxEphysRecordingExtractor
+from .extractors import LabboxEphysRecordingExtractor, LabboxEphysSortingExtractor
 import hither as hi
 import kachery_p2p as kp
 
@@ -37,7 +37,12 @@ def get_recordings_file_path(*, readonly: bool = False) -> str:
 
 def get_valid_recordings(fname: str) -> List[Any]:
     with open(fname, 'r') as fp:
-        recordings: List[Any] = json.load(fp)
+        recordings: List[Any] = json.load(fp)['recordings']
+        return recordings
+
+def get_valid_sortings(fname: str) -> List[Any]:
+    with open(fname, 'r') as fp:
+        recordings: List[Any] = json.load(fp)['sortings']
         return recordings
 
 def load_recording(rec_id: str) -> Any:
@@ -50,6 +55,17 @@ def load_recording(rec_id: str) -> Any:
             recording = LabboxEphysRecordingExtractor(uri, download=False)
             return recording
     raise Exception(f"Requested recording with identifier '{rec_id}' is not recognized.")
+
+def load_sorting(sorting_id: str) -> Any:
+    valid_sortings: List[Any] = get_valid_sortings(get_recordings_file_path(readonly=True))
+    for entry in valid_sortings:
+        sorting_json = f"{sorting_id}.json"
+        if (sorting_id == entry['sortingId'] or sorting_id == entry['sortingLabel']
+            or sorting_json == entry['sortingId'] or sorting_json == entry['sortingLabel']):
+            uri = entry['sortingPath']
+            sorting = LabboxEphysSortingExtractor(uri)
+            return sorting
+    raise Exception(f"Requested sorting with identifier '{sorting_id}' is not recognized.")
 
 
 # Through hither, this function will actually be run on the remote compute resource.

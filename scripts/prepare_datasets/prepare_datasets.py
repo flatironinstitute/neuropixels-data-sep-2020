@@ -18,10 +18,11 @@ jc = hi.JobCache(use_tempdir=True)
 
 with hi.RemoteJobHandler(uri=compute_resource_uri) as jh:
     with hi.Config(job_handler=jh, container=True, job_cache=jc):
-        le_recordings1 = prepare_cortexlab_datasets()
+        le_recordings1, le_sortings1 = prepare_cortexlab_datasets()
         le_recordings2 = prepare_sieglelab_datasets()
 
 le_recordings = le_recordings1 + le_recordings2
+le_sortings = le_sortings1
 
 try:
     f = kp.create_feed()
@@ -33,22 +34,38 @@ try:
                 recording=le_recording
             )
         ))
+    for le_sorting in le_sortings:
+        recordings.append_message(dict(
+            action=dict(
+                type='ADD_SORTING',
+                sorting=le_sorting
+            )
+        ))
     x = f.create_snapshot([dict(documentId='default', key='recordings')])
     print(x.get_uri())
 finally:
     f.delete()
 
 with open(known_recordings_file, 'w') as fp:
-    json.dump(le_recordings, fp)
+    json.dump(dict(
+        recordings=le_recordings,
+        sortings=le_sortings
+    ), fp)
 
 print('')
 print(f'[View in browser (labbox-ephys)]({aws_url}?feed={x.get_uri()})')
 
 print('')
-print('| Name  | Description |')
+print('| Recording  | Description |')
 print('|------ | ----------- |')
 for le_recording in le_recordings:
     print(f'| {le_recording["recordingLabel"]} | Placeholder for {le_recording["recordingId"]} |')
 print('')
 
+print('')
+print('| Sorting  | Description |')
+print('|------ | ----------- |')
+for le_sorting in le_sortings:
+    print(f'| {le_sorting["sortingLabel"]} | Placeholder for {le_sorting["sortingId"]} |')
+print('')
 
