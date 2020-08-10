@@ -6,8 +6,6 @@ from pathlib import Path
 from typing import List, Any
 
 from .extractors import LabboxEphysRecordingExtractor, LabboxEphysSortingExtractor
-import hither as hi
-import kachery_p2p as kp
 
 module_name = 'neuropixels-data-sep-2020'
 
@@ -66,14 +64,3 @@ def load_sorting(sorting_id: str) -> Any:
             sorting = LabboxEphysSortingExtractor(uri)
             return sorting
     raise Exception(f"Requested sorting with identifier '{sorting_id}' is not recognized.")
-
-
-# Through hither, this function will actually be run on the remote compute resource.
-# By unsetting the job cache in the config we ensure the function actually runs. This
-# ensures that the file actually gets downloaded from the peer network on the rcr.
-# Any container used must use the same $KACHERY_STORAGE_DIR as the surrounding environment.
-@hi.function('upload_file_to_compute_resource', '0.1.0')
-@hi.container('docker://magland/labbox-ephys-processing:latest')
-def upload_file_to_compute_resource(file_sha1: str) -> None:
-    with hi.Config(job_cache=None):
-        return kp.load_file(file_sha1)
