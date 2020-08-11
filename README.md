@@ -29,11 +29,9 @@ The following recordings were generated using [prepare_datasets.py](./scripts/pr
 | allen_mouse419112_probeE (ch 0-7, 10 sec) | Placeholder for allen_mouse419112_probeE-ch0-7.10sec |
 | allen_mouse419112_probeE (10 sec) | Placeholder for allen_mouse419112_probeE-10sec |
 
-
 | Sorting  | Description |
 |------ | ----------- |
 | cortexlab-single-phase-3 Curated | Placeholder for cortexlab-single-phase-3:curated |
-
 <!-- -->
 
 ## Loading into Python and exporting to various formats
