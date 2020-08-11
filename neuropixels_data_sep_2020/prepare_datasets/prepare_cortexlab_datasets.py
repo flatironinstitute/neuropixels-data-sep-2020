@@ -15,13 +15,10 @@ def prepare_cortexlab_datasets():
         raw_num_channels=385,
         samplerate=30000
     )
-    S1 = dict(
-        sorting_format='npy1',
-        data=dict(
-            times_npy_uri='sha1://2d8264241321fda3b6c987412b353232068c3e93/spike_times.npy?manifest=b7f91b25b95252cdeb299b8249a622d49eddabcc',
-            labels_npy_uri='sha1://cd893db02d086b332ee46d56b2373dd0350bf471/spike_clusters.npy?manifest=6efc0362d708fa3a9ae5ce9280898a54e6e5d189',
-            samplerate=30000
-        )
+    S1 = cortexlab_create_sorting_object.run(
+        times_npy_uri='sha1://2d8264241321fda3b6c987412b353232068c3e93/spike_times.npy?manifest=b7f91b25b95252cdeb299b8249a622d49eddabcc',
+        labels_npy_uri='sha1://cd893db02d086b332ee46d56b2373dd0350bf471/spike_clusters.npy?manifest=6efc0362d708fa3a9ae5ce9280898a54e6e5d189',
+        samplerate=30000
     )
     R2 = create_subrecording_object.run(
         recording_object=R1,
@@ -37,6 +34,7 @@ def prepare_cortexlab_datasets():
     )
     hi.wait()
     R1 = R1.get_result()
+    S1 = S1.get_result()
     R2 = R2.get_result()
     R3 = R3.get_result()
 
