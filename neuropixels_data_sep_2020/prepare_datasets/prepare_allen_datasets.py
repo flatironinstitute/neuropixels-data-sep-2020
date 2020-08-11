@@ -7,7 +7,7 @@ from .cortexlab_utils import cortexlab_create_recording_object
 from .create_subrecording_object import create_subrecording_object
 from .create_subrecording_object import create_subrecording_object
 
-def prepare_sieglelab_datasets():
+def prepare_allen_datasets():
     bin_uri = 'sha1://39ae3fcccd3803170dd97fc9a8799e7169214419/continuous.dat?manifest=31942d7d97ff3a46fa1dbca72d8dc048bd65d5ce'
     channel_info_uri = 'sha1://349d7f018f4f09da5c230a9d46e07c2aeffbc1e2/channel_info.csv'
     channel_positions = _load_channel_positions_from_csv(channel_info_uri)
@@ -43,21 +43,21 @@ def prepare_sieglelab_datasets():
     # labbox-ephys format for recordings
     le_recordings = []
     le_recordings.append(dict(
-        recordingId='sieglelab_mouse419112_probeE',
-        recordingLabel='sieglelab_mouse419112_probeE (full)',
-        recordingPath=ka.store_object(X1, basename='sieglelab_mouse419112_probeE.json'),
+        recordingId='allen_mouse419112_probeE',
+        recordingLabel='allen_mouse419112_probeE (full)',
+        recordingPath=ka.store_object(X1, basename='allen_mouse419112_probeE.json'),
         recordingObject=X1
     ))
     le_recordings.append(dict(
-        recordingId='sieglelab_mouse419112_probeE-ch0-7.10sec',
-        recordingLabel='sieglelab_mouse419112_probeE (ch 0-7, 10 sec)',
-        recordingPath=ka.store_object(X2, basename='sieglelab_mouse419112_probeE-ch0-7-10sec.json'),
+        recordingId='allen_mouse419112_probeE-ch0-7.10sec',
+        recordingLabel='allen_mouse419112_probeE (ch 0-7, 10 sec)',
+        recordingPath=ka.store_object(X2, basename='allen_mouse419112_probeE-ch0-7-10sec.json'),
         recordingObject=X2
     ))
     le_recordings.append(dict(
-        recordingId='sieglelab_mouse419112_probeE-10sec',
-        recordingLabel='sieglelab_mouse419112_probeE (10 sec)',
-        recordingPath=ka.store_object(X3, basename='sieglelab_mouse419112_probeE-10sec.json'),
+        recordingId='allen_mouse419112_probeE-10sec',
+        recordingLabel='allen_mouse419112_probeE (10 sec)',
+        recordingPath=ka.store_object(X3, basename='allen_mouse419112_probeE-10sec.json'),
         recordingObject=X3
     ))
 
