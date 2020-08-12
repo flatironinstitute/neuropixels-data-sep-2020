@@ -9,7 +9,7 @@ import sys
 from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_allen_datasets, get_recordings_file_path
 
 known_recordings_file = get_recordings_file_path()
-aws_url = 'http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default'
+aws_url = 'http://ephys1.laboratorybox.org'
 compute_resource_uri = 'feed://82a4286f85b50866c290fe5650bbe52c507362aee420ba0185b3d9c7fa638da9?name=ccmlin008.flatironinstitute.org'
 
 jc = hi.JobCache(use_tempdir=True)
@@ -52,20 +52,33 @@ with open(known_recordings_file, 'w') as fp:
         sortings=le_sortings
     ), fp)
 
-print('')
-print(f'[View in browser (labbox-ephys)]({aws_url}?feed={x.get_uri()})')
+lines = []
 
-print('')
-print('| Recording  | Description |')
-print('|------ | ----------- |')
+lines.append('')
+lines.append(f'[View in browser (labbox-ephys)]({aws_url}/default?feed={x.get_uri()})')
+
+lines.append('')
+lines.append('| Recording ID | Web link | Description |')
+lines.append('|------ | ---- | ----------- |')
 for le_recording in le_recordings:
-    print(f'| {le_recording["recordingLabel"]} | Placeholder for {le_recording["recordingId"]} |')
-print('')
+    recid = le_recording['recordingId']
+    description = le_recording.get('description', '')
+    le_url = f'{aws_url}/default/recording/{recid}?feed={x.get_uri()}'
+    lines.append(f'| {recid} | [view]({le_url}) | {description} |')
+lines.append('')
 
-print('')
-print('| Sorting  | Description |')
-print('|------ | ----------- |')
+lines.append('')
+lines.append('| Sorting | Web link | Description |')
+lines.append('|------ | ---- | ----------- |')
 for le_sorting in le_sortings:
-    print(f'| {le_sorting["sortingLabel"]} | Placeholder for {le_sorting["sortingId"]} |')
-print('')
+    sortid = le_sorting['sortingId']
+    description = le_sorting.get('description', '')
+    le_url = f'{aws_url}/default/sorting/{sortid}?feed={x.get_uri()}'
+    lines.append(f'| {sortid} | [view]({le_url}) | {description} |')
+lines.append('')
+
+txt = '\n'.join(lines)
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+print(txt)
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 

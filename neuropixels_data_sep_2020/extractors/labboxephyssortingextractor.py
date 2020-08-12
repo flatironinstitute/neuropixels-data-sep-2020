@@ -1,4 +1,5 @@
 from copy import deepcopy
+from .h5extractors.h5sortingextractorv1 import H5SortingExtractorV1
 from typing import Union
 import kachery as ka
 import kachery_p2p as kp
@@ -40,7 +41,6 @@ def _try_mda_create_object(arg: Union[str, dict], samplerate=None) -> Union[None
     return None
 
 def _create_object_for_arg(arg: Union[str, dict], samplerate=None) -> Union[dict, None]:
-    print('---- debug1')
     # check to see if it already has the sorting_format field. If so, just return arg
     if (isinstance(arg, dict)) and ('sorting_format' in arg):
         return arg
@@ -84,6 +84,9 @@ class LabboxEphysSortingExtractor(se.SortingExtractor):
             firings_path = kp.load_file(data['firings'])
             assert firings_path is not None, f'Unable to load firings file: {data["firings"]}'
             self._sorting: se.SortingExtractor = MdaSortingExtractor(firings_file=firings_path, samplerate=data['samplerate'])
+        elif sorting_format == 'h5_v1':
+            h5_path = kp.load_file(data['h5_path'])
+            self._sorting = H5SortingExtractorV1(h5_path=h5_path)
         elif sorting_format == 'npy1':
             times_npy = kp.load_npy(data['times_npy_uri'])
             labels_npy = kp.load_npy(data['labels_npy_uri'])
