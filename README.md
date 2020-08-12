@@ -7,7 +7,7 @@ Example electrophysiology recordings for the purpose of developing and optimizin
 
 This repository contains links to some ephys recordings using neuropixels probes together with curated spike sorting results. It also contains two recordings with known imposed drift and two hybrid pseudo-ground truth neuropixels recordings. These may be used to evaluate the performance of spike sorting methods.
 
-You can interact with the data in various ways
+You can interact with the data in various ways:
 
 * Visualize data within the web browser (links below)
 * Load data directly into Python [SpikeInterface](https://github.com/SpikeInterface) objects (more information below)
@@ -50,9 +50,12 @@ Because electrophysiology recordings can be large, we have created a peer-to-pee
 
 We have integrated this system with [SpikeInterface](https://github.com/SpikeInterface) which allows lazy loading of recordings into RecordingExtractor objects.
 
-**Step 1.** You must be running a kachery-p2p daemon on the flatiron1 channel. [See these instructions.](https://github.com/flatironinstitute/kachery-p2p). This should work in Linux or MacOS.
+**Step 1.** You must be running a kachery-p2p daemon on the `flatiron1` channel.
+[See these instructions](https://github.com/flatironinstitute/kachery-p2p).
+The kachery-p2p tool has been tested on Linux and MacOS.
 
-**Step 2.** Load a recording into a SpikeInterface recording extractor.
+**Step 2.** Load a recording into a SpikeInterface recording extractor. From within the
+`neuropixels-data-sep-2020` directory tree:
 
 ```python
 import neuropixels_data_sep_2020 as nd
@@ -61,9 +64,8 @@ import spikeextractors as se
 # Replace this with the desired recording ID from above
 recording_id = 'cortexlab-single-phase-3 (ch 0-7, 10 sec)'
 
-# Note: if the files are not already on your
-# computer then you need to run a kachery-p2p
-# daemon on the flatiron1 channel.
+# Note: if the files are not already on your, then you need
+# to run a kachery-p2p daemon on the flatiron1 channel.
 recording = nd.load_recording(recording_id)
 
 # recording is a SpikeInterface recording extractor
@@ -76,9 +78,8 @@ channel_locations = recording.get_channel_locations()
 print(f'Num. channels: {num_channels}')
 print(f'Duration: {num_frames / samplerate} sec')
 
-# You can also extract the raw traces
-# this will only download the part of the raw file
-# needed
+# You can also extract the raw traces.
+# This will only download the part of the raw file needed
 traces = recording.get_traces(channel_ids=[0, 1, 2, 3], start_frame=0, end_frame=5000)
 print(f'Shape of extracted traces: {traces.shape}')
 
@@ -116,7 +117,7 @@ Single Phase 3 dataset source data: http://data.cortexlab.net/singlePhase3
 
 Notes about the Allen Institute curated sorting output:
 
-Selected units based on the following criteria:
+Units were selected based on the following criteria:
 ```
 ISI violations < 0.01
 amplitude cutoff < 0.01
@@ -125,7 +126,7 @@ nearest-neighbors hit rate > 0.96
 SNR > 3.0
 ```
 
-Then manually inspected each one to confirm its quality.
+Each unit was then manually inspected to confirm its quality.
 
 There were a total of 76 high-quality units across both datasets.
 
