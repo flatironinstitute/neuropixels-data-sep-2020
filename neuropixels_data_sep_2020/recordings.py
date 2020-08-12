@@ -14,7 +14,10 @@ def get_recordings_file_path(*, readonly: bool = False) -> str:
     p = Path(os.getcwd())
 
     if (not module_name in str(p)):
-        raise Exception("prepare_datasets.py is being executed from an unsupported directory.")
+        raise Exception(f"""
+    Recordings-file could not be located.
+    Please ensure that you run from within the {module_name} directory.
+    """)
     basepath = p
     for x in p.parents:
         if module_name in str(x):
