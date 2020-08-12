@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
+from neuropixels_data_sep_2020.uploader import upload_file_to_compute_resource
 import hither as hi
 import kachery as ka
 import kachery_p2p as kp
-from .cortexlab_utils import cortexlab_create_recording_object
+from .cortexlab_utils import cortexlab_create_sorting_object
 from .create_subrecording_object import create_subrecording_object
 from .create_subrecording_object import create_subrecording_object
 
@@ -24,12 +25,26 @@ def prepare_allen_datasets():
             channel_positions=channel_positions
         )
     )
+
     X2 = create_subrecording_object.run(
         recording_object=X1,
         channels=[0, 1, 2, 3, 4, 5, 6, 7],
         start_frame=0,
         end_frame=30000 * 10
     )
+
+    times_npy_uri = 'sha1://57029ae68643881f5d4015397be87ba0d4815b52/curated_unit_times.npy?manifest=80b52bf7cd37ef7fb0d4ba5d1dfa543ffb207ce1'
+    labels_npy_uri = 'sha1://61762d8f0bdac57db64ceec1636e0009af0f02ef/curated_unit_IDs.npy?manifest=f716950fadb97a5a154d8762220194af6381e2c1'
+    unit_channels_npy_uri = 'sha1://8b3a98b9d45c1c62eb4402245800e278873bd8e5/curated_unit_channels.npy?manifest=91e899e3d4649f3ae457f6bf0926211dea8aa8fe'
+    upload_file_to_compute_resource(times_npy_uri)
+    upload_file_to_compute_resource(labels_npy_uri)
+    upload_file_to_compute_resource(unit_channels_npy_uri)
+    S1 = cortexlab_create_sorting_object.run(
+        times_npy_uri=times_npy_uri,
+        labels_npy_uri=labels_npy_uri,
+        samplerate=30000
+    )
+
     X3 = create_subrecording_object.run(
         recording_object=X1,
         channels=None,
@@ -37,16 +52,32 @@ def prepare_allen_datasets():
         end_frame=30000 * 10
     )
     hi.wait()
+    S1 = S1.get_result()
     X2 = X2.get_result()
     X3 = X3.get_result()
 
     # labbox-ephys format for recordings
     le_recordings = []
+    le_sortings = []
     le_recordings.append(dict(
         recordingId='allen_mouse419112_probeE',
         recordingLabel='allen_mouse419112_probeE (full)',
         recordingPath=ka.store_object(X1, basename='allen_mouse419112_probeE.json'),
         recordingObject=X1
+    ))
+    le_sortings.append(dict(
+        sortingId='allen_mouse419112_probeE:curated',
+        sortingLabel='allen_mouse419112_probeE Curated',
+        sortingPath=ka.store_object(S1, basename='allen_mouse419112_probeE-curated.json'),
+        sortingObject=S1,
+
+        recordingId='allen_mouse419112_probeE',
+        recordingPath=ka.store_object(X1, basename='allen_mouse419112_probeE.json'),
+        recordingObject=X1,
+
+        description='''
+        Curated spike sorting for allen_mouse419112_probeE
+        '''.strip()
     ))
     le_recordings.append(dict(
         recordingId='allen_mouse419112_probeE-ch0-7.10sec',
@@ -61,7 +92,7 @@ def prepare_allen_datasets():
         recordingObject=X3
     ))
 
-    return le_recordings
+    return le_recordings, le_sortings
 
 def _load_channel_positions_from_csv(uri):
     csvtxt = kp.load_text(uri)

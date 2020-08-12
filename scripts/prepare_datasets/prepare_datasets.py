@@ -3,6 +3,7 @@
 import hither as hi
 import kachery_p2p as kp
 import json
+import datetime
 import os
 from pathlib import Path
 import sys
@@ -19,10 +20,10 @@ jc = hi.JobCache(use_tempdir=True)
 with hi.RemoteJobHandler(uri=compute_resource_uri) as jh:
     with hi.Config(job_handler=jh, container=True, job_cache=jc):
         le_recordings1, le_sortings1 = prepare_cortexlab_datasets()
-        le_recordings2 = prepare_allen_datasets()
+        le_recordings2, le_sortings2 = prepare_allen_datasets()
 
 le_recordings = le_recordings1 + le_recordings2
-le_sortings = le_sortings1
+le_sortings = le_sortings1 + le_sortings2
 
 try:
     f = kp.create_feed()
@@ -54,10 +55,6 @@ with open(known_recordings_file, 'w') as fp:
 
 lines = []
 
-lines.append('')
-lines.append(f'[View in browser (labbox-ephys)]({aws_url}/default?feed={x.get_uri()})')
-
-lines.append('')
 lines.append('| Recording ID | Web link | Description |')
 lines.append('|------ | ---- | ----------- |')
 for le_recording in le_recordings:
@@ -68,7 +65,7 @@ for le_recording in le_recordings:
 lines.append('')
 
 lines.append('')
-lines.append('| Sorting | Web link | Description |')
+lines.append('| Sorting ID | Web link | Description |')
 lines.append('|------ | ---- | ----------- |')
 for le_sorting in le_sortings:
     sortid = le_sorting['sortingId']
@@ -77,8 +74,30 @@ for le_sorting in le_sortings:
     lines.append(f'| {sortid} | [view]({le_url}) | {description} |')
 lines.append('')
 
+lines.append('')
+lines.append(f'[Browse all recordings]({aws_url}/default?feed={x.get_uri()})')
+
 txt = '\n'.join(lines)
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print(txt)
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+
+try:
+    with open('README.md') as f:
+        readme_txt = f.read()
+    ind1 = readme_txt.find('<!-- BEGIN DATA TABLE -->')
+    ind2 = readme_txt.find('<!-- END DATA TABLE -->')
+    assert (ind1 >=0) and (ind2 >= 0)
+    readme_txt = ''.join([
+        readme_txt[:ind1],
+        '<!-- BEGIN DATA TABLE -->\n',
+        f'\n<!--- Auto-generated at {datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S")}-->\n',
+        '\n'.join(lines),
+        '\n',
+        readme_txt[ind2:]
+    ])
+    with open('README.md', 'w') as f:
+        f.write(readme_txt)
+except:
+    print('Unable to auto-update README.md. Run this script from the base directory of the repo.')
 
