@@ -41,7 +41,6 @@ def _try_mda_create_object(arg: Union[str, dict], samplerate=None) -> Union[None
     return None
 
 def _create_object_for_arg(arg: Union[str, dict], samplerate=None) -> Union[dict, None]:
-    print('---- debug1')
     # check to see if it already has the sorting_format field. If so, just return arg
     if (isinstance(arg, dict)) and ('sorting_format' in arg):
         return arg

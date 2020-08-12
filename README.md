@@ -1,7 +1,7 @@
 **Note**: This repo is in preparation
 
 # neuropixels-data-sep-2020
-Example neuropixels datasets for the purpose of developing and optimizing spike sorting algorithms.
+Example electrophysiology recordings for the purpose of developing and optimizing spike sorting algorithms for neuropixels probes. Methods for dealing with drift are of particular interest.
 
 ## Overview
 
@@ -9,45 +9,55 @@ This repository contains links to some ephys recordings using neuropixels probes
 
 You can interact with the data in various ways
 
-* Visualize data within the web browser (labbox-ephys links below)
-* Downloading files from their original source (where available)
-* Loading data directly into Python [SpikeInterface](https://github.com/SpikeInterface) objects (using [kachery-p2p](https://github.com/flatironinstitute/kachery-p2p))
+* Visualize data within the web browser (links below)
+* Load data directly into Python [SpikeInterface](https://github.com/SpikeInterface) objects (more information below)
+* Download files from their original source (where available in links below)
 
 ## Datasets
 
 The following recordings were generated using [prepare_datasets.py](./scripts/prepare_datasets/prepare_datasets.py).
 
 <!-- prepare_recording.py -->
-[View in browser (labbox-ephys)](http://a9b927286911d4338ab905d0eabba09d-949726054.us-east-2.elb.amazonaws.com:8081/default?feed=sha1://4325e139682e025e69d3b6a0bf250c1fb28482a9/feed.json)
 
-| Recording  | Description |
-|------ | ----------- |
-| cortexlab-single-phase-3 (full) | Placeholder for cortexlab-single-phase-3 |
-| cortexlab-single-phase-3 (ch 0-7, 10 sec) | Placeholder for cortexlab-single-phase-3-ch0-7.10sec |
-| cortexlab-single-phase-3 (10 sec) | Placeholder for cortexlab-single-phase-3.10sec |
-| allen_mouse419112_probeE (full) | Placeholder for allen_mouse419112_probeE |
-| allen_mouse419112_probeE (ch 0-7, 10 sec) | Placeholder for allen_mouse419112_probeE-ch0-7.10sec |
-| allen_mouse419112_probeE (10 sec) | Placeholder for allen_mouse419112_probeE-10sec |
+[View in browser (labbox-ephys)](https://ephys1.laboratorybox.org/default?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json)
 
-| Sorting  | Description |
-|------ | ----------- |
-| cortexlab-single-phase-3 Curated | Placeholder for cortexlab-single-phase-3:curated |
+| Recording ID | Web link | Description |
+|------ | ---- | ----------- |
+| cortexlab-single-phase-3 (full) | [view](https://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) | A "Phase3" Neuropixels electrode array was inserted into the brain of an awake, head-fixed mouse for about an hour. |
+| cortexlab-single-phase-3 (10 sec) | [view](https://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3.10sec?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) | Extracted 10 seconds of data from the beginning of the recording |
+| cortexlab-single-phase-3 (ch 0-7, 10 sec) | [view](https://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3-ch0-7.10sec?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) | Extracted a subset of channels and 10 seconds of data from the beginning of the recording |
+| allen_mouse419112_probeE (full) | [view](https://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) |  |
+| allen_mouse419112_probeE (ch 0-7, 10 sec) | [view](https://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-ch0-7.10sec?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) |  |
+| allen_mouse419112_probeE (10 sec) | [view](https://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-10sec?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) |  |
+
+
+| Sorting | Web link | Description |
+|------ | ---- | ----------- |
+| cortexlab-single-phase-3 Curated | [view](le_url) | Curated spike sorting |
+
 <!-- -->
 
 ## Loading into Python and exporting to various formats
 
-To load the data into [SpikeInterface](https://github.com/SpikeInterface) recording extractors, you must be running a kachery-p2p daemon on the flatiron1 channel. [See these instructions.](https://github.com/flatironinstitute/kachery-p2p)
+Because electrophysiology recordings can be large, we have created a peer-to-peer sharing system ([kachery-p2p](https://github.com/flatironinstitute/kachery-p2p)) that runs in Linux or Mac and interfaces directly to Python. By running a kachery-p2p daemon on your computer, you are participating in the network for sharing these datasets with other users of the system.
+
+We have integrated this system with [SpikeInterface](https://github.com/SpikeInterface) which allows lazy loading of recordings into RecordingExtractor objects.
+
+**Step 1.** You must be running a kachery-p2p daemon on the flatiron1 channel. [See these instructions.](https://github.com/flatironinstitute/kachery-p2p). This should work in Linux or MacOS.
+
+**Step 2.** Load a recording into a SpikeInterface recording extractor.
 
 ```python
-from neuropixels_data_sep_2020 import LabboxEphysRecordingExtractor
+import neuropixels_data_sep_2020 as nd
 import spikeextractors as se
 
-# Replace this with the desired recording URI from above
-recording_uri = 'sha1://595d78d1e1a61c12c437afedd808b565cce82e5e/allen_mouse419112_probeE-ch0-7-10sec.json'
-# If the files are not already on your computer
-# then you need to run a kachery-p2p daemon
-# on the flatiron1 channel.
-recording = LabboxEphysRecordingExtractor(recording_uri, download=False)
+# Replace this with the desired recording ID from above
+recording_id = 'cortexlab-single-phase-3 (ch 0-7, 10 sec)'
+
+# Note: if the files are not already on your
+# computer then you need to run a kachery-p2p
+# daemon on the flatiron1 channel.
+recording = nd.load_recording(recording_id)
 
 # recording is a SpikeInterface recording extractor
 # so you can extract information
@@ -56,17 +66,16 @@ num_frames = recording.get_num_frames()
 num_channels = len(recording.get_channel_ids())
 channel_locations = recording.get_channel_locations()
 
-print(f'Num. channels: {num_channels} sec')
+print(f'Num. channels: {num_channels}')
 print(f'Duration: {num_frames / samplerate} sec')
 
 # You can also extract the raw traces
-# and if download=False above, it will
-# only download the part of the raw file
+# this will only download the part of the raw file
 # needed
 traces = recording.get_traces(channel_ids=[0, 1, 2, 3], start_frame=0, end_frame=5000)
 print(f'Shape of extracted traces: {traces.shape}')
 
-# Or equivalently:
+# Or equivalently (using SubRecordingExtractor):
 recording_sub = se.SubRecordingExtractor(
     parent_recording=recording,
     channel_ids=[0, 1, 2, 3],
@@ -77,8 +86,8 @@ print(f'Shape of extracted traces: {traces2.shape}')
 ```
 
 Once a dataset is loaded into a SpikeInterface extractor, you can
-interact with it directly in Python. With the `download=False` flag,
-the data will be lazy-loaded from the network.
+interact with it directly in Python. The data will be
+lazy-loaded from the peer-to-peer network.
 
 You can create subextractors as above, and export to any of the
 [formats supported by SpikeExtractors](https://github.com/SpikeInterface/spikeextractors/tree/master/spikeextractors/extractors).
@@ -88,9 +97,6 @@ import spikeextractors as se
 
 # Example export to raw binary .dat
 se.BinDatRecordingExtractor.write_recording(recording, '/output/file.dat')
-
-# Example export to .nwb format
-se.NwbRecordingExtractor.write_recording(recording, '/output/file.dat')
 ```
 
 ## Data from Nick Steinmetz

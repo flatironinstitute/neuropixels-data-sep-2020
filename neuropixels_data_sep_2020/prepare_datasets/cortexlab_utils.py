@@ -47,7 +47,7 @@ def cortexlab_create_recording_object(
     )
     return ret
 
-@hi.function('cortexlab_create_sorting_object', '0.1.0')
+@hi.function('cortexlab_create_sorting_object', '0.1.3')
 @hi.container('docker://magland/labbox-ephys-processing:latest')
 def cortexlab_create_sorting_object(
     times_npy_uri,
@@ -63,6 +63,7 @@ def cortexlab_create_sorting_object(
         labels = ka.load_npy(labels_npy_uri)
 
         sorting = se.NumpySortingExtractor()
+        sorting.set_sampling_frequency(samplerate)
         sorting.set_times_labels(times.ravel(), labels.ravel())
 
         save_path = tmpdir + '/sorting.h5'
@@ -70,12 +71,14 @@ def cortexlab_create_sorting_object(
         unit_ids = sorting.get_unit_ids()
         samplerate = sorting.get_sampling_frequency()
         with h5py.File(save_path, 'w') as f:
-            f.create_dataset('unit_ids', data=unit_ids)
-            f.create_dataset('sampling_frequency', data=[samplerate])
+            f.create_dataset('unit_ids', data=np.array(unit_ids).astype(np.int32))
+            f.create_dataset('sampling_frequency', data=np.array([samplerate]).astype(np.float64))
             for unit_id in unit_ids:
                 x = sorting.get_unit_spike_train(unit_id=unit_id)
-                f.create_dataset(f'spike_trains/{unit_id}', x)
+                f.create_dataset(f'unit_spike_trains/{unit_id}', data=np.array(x).astype(np.float64))
         return dict(
             sorting_format='h5_v1',
-            h5_path=ka.store_file(save_path)
+            data=dict(
+                h5_path=ka.store_file(save_path)
+            )
         )
