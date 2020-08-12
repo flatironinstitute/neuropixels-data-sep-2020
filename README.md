@@ -19,21 +19,19 @@ The following recordings were generated using [prepare_datasets.py](./scripts/pr
 
 <!-- prepare_recording.py -->
 
-[View in browser (labbox-ephys)](https://ephys1.laboratorybox.org/default?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json)
-
 | Recording ID | Web link | Description |
 |------ | ---- | ----------- |
-| cortexlab-single-phase-3 (full) | [view](https://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) | A "Phase3" Neuropixels electrode array was inserted into the brain of an awake, head-fixed mouse for about an hour. |
-| cortexlab-single-phase-3 (10 sec) | [view](https://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3.10sec?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) | Extracted 10 seconds of data from the beginning of the recording |
-| cortexlab-single-phase-3 (ch 0-7, 10 sec) | [view](https://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3-ch0-7.10sec?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) | Extracted a subset of channels and 10 seconds of data from the beginning of the recording |
-| allen_mouse419112_probeE (full) | [view](https://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) |  |
-| allen_mouse419112_probeE (ch 0-7, 10 sec) | [view](https://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-ch0-7.10sec?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) |  |
-| allen_mouse419112_probeE (10 sec) | [view](https://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-10sec?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) |  |
+| cortexlab-single-phase-3 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) | A "Phase3" Neuropixels electrode array was inserted into the brain of an awake, head-fixed mouse for about an hour. |
+| cortexlab-single-phase-3.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3.10sec?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) | Extracted 10 seconds of data from the beginning of the recording |
+| cortexlab-single-phase-3-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3-ch0-7.10sec?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) | Extracted a subset of channels and 10 seconds of data from the beginning of the recording |
+| allen_mouse419112_probeE | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) |  |
+| allen_mouse419112_probeE-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-ch0-7.10sec?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) |  |
+| allen_mouse419112_probeE-10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-10sec?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) |  |
 
 
 | Sorting | Web link | Description |
 |------ | ---- | ----------- |
-| cortexlab-single-phase-3 Curated | [view](le_url) | Curated spike sorting |
+| cortexlab-single-phase-3:curated | [view](http://ephys1.laboratorybox.org/default/sorting/cortexlab-single-phase-3:curated?feed=sha1://af45d008dff1f07655627d284dff98d3f549bb4f/feed.json) | Curated spike sorting |
 
 <!-- -->
 
