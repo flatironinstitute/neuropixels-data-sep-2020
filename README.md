@@ -21,25 +21,27 @@ The following recordings were generated using [prepare_datasets.py](./scripts/pr
 
 <!-- BEGIN DATA TABLE -->
 
-<!--- Auto-generated at 08/12/2020, 13:20:34-->
+<!--- Auto-generated at 08/12/2020, 14:51:28-->
 | Recording ID | Web link | Description |
 |------ | ---- | ----------- |
-| cortexlab-single-phase-3 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3?feed=sha1://feb071cc918dab8201f1fc1e0016cbb0dce6250a/feed.json) | A "Phase3" Neuropixels electrode array was inserted into the brain of an awake, head-fixed mouse for about an hour. |
-| cortexlab-single-phase-3.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3.10sec?feed=sha1://feb071cc918dab8201f1fc1e0016cbb0dce6250a/feed.json) | Extracted 10 seconds of data from the beginning of the recording |
-| cortexlab-single-phase-3-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3-ch0-7.10sec?feed=sha1://feb071cc918dab8201f1fc1e0016cbb0dce6250a/feed.json) | Extracted a subset of channels and 10 seconds of data from the beginning of the recording |
-| allen_mouse419112_probeE | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE?feed=sha1://feb071cc918dab8201f1fc1e0016cbb0dce6250a/feed.json) |  |
-| allen_mouse419112_probeE-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-ch0-7.10sec?feed=sha1://feb071cc918dab8201f1fc1e0016cbb0dce6250a/feed.json) |  |
-| allen_mouse419112_probeE-10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-10sec?feed=sha1://feb071cc918dab8201f1fc1e0016cbb0dce6250a/feed.json) |  |
+| cortexlab-single-phase-3 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3?feed=sha1://eab32b0c4b338c29d95b30b9e072cd709af48ae5/feed.json) | A "Phase3" Neuropixels electrode array was inserted into the brain of an awake, head-fixed mouse for about an hour. |
+| cortexlab-single-phase-3.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3.10sec?feed=sha1://eab32b0c4b338c29d95b30b9e072cd709af48ae5/feed.json) | Extracted 10 seconds of data from the beginning of the recording |
+| cortexlab-single-phase-3-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3-ch0-7.10sec?feed=sha1://eab32b0c4b338c29d95b30b9e072cd709af48ae5/feed.json) | Extracted a subset of channels and 10 seconds of data from the beginning of the recording |
+| allen_mouse419112_probeE | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE?feed=sha1://eab32b0c4b338c29d95b30b9e072cd709af48ae5/feed.json) | A one hour neuropixels recording from Allen Institute |
+| allen_mouse415148_probeE | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse415148_probeE?feed=sha1://eab32b0c4b338c29d95b30b9e072cd709af48ae5/feed.json) | A one hour neuropixels recording from Allen Institute |
+| allen_mouse419112_probeE-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-ch0-7.10sec?feed=sha1://eab32b0c4b338c29d95b30b9e072cd709af48ae5/feed.json) | Subset of channels and first 10 seconds of allen_mouse419112_probeE |
+| allen_mouse419112_probeE-10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-10sec?feed=sha1://eab32b0c4b338c29d95b30b9e072cd709af48ae5/feed.json) | First 10 seconds of allen_mouse419112_probeE |
 
 
 | Sorting ID | Web link | Description |
 |------ | ---- | ----------- |
-| cortexlab-single-phase-3:curated | [view](http://ephys1.laboratorybox.org/default/sorting/cortexlab-single-phase-3:curated?feed=sha1://feb071cc918dab8201f1fc1e0016cbb0dce6250a/feed.json) | Curated spike sorting for cortexlab-single-phase-3 |
-| cortexlab-single-phase-3:curated_good | [view](http://ephys1.laboratorybox.org/default/sorting/cortexlab-single-phase-3:curated_good?feed=sha1://feb071cc918dab8201f1fc1e0016cbb0dce6250a/feed.json) | Curated spike sorting for cortexlab-single-phase-3 (good units only) |
-| allen_mouse419112_probeE:curated | [view](http://ephys1.laboratorybox.org/default/sorting/allen_mouse419112_probeE:curated?feed=sha1://feb071cc918dab8201f1fc1e0016cbb0dce6250a/feed.json) | Curated spike sorting for allen_mouse419112_probeE |
+| cortexlab-single-phase-3:curated | [view](http://ephys1.laboratorybox.org/default/sorting/cortexlab-single-phase-3:curated?feed=sha1://eab32b0c4b338c29d95b30b9e072cd709af48ae5/feed.json) | Curated spike sorting for cortexlab-single-phase-3 |
+| cortexlab-single-phase-3:curated_good | [view](http://ephys1.laboratorybox.org/default/sorting/cortexlab-single-phase-3:curated_good?feed=sha1://eab32b0c4b338c29d95b30b9e072cd709af48ae5/feed.json) | Curated spike sorting for cortexlab-single-phase-3 (good units only) |
+| allen_mouse419112_probeE:curated | [view](http://ephys1.laboratorybox.org/default/sorting/allen_mouse419112_probeE:curated?feed=sha1://eab32b0c4b338c29d95b30b9e072cd709af48ae5/feed.json) | Curated spike sorting for allen_mouse419112_probeE |
+| allen_mouse415148_probeE:curated | [view](http://ephys1.laboratorybox.org/default/sorting/allen_mouse415148_probeE:curated?feed=sha1://eab32b0c4b338c29d95b30b9e072cd709af48ae5/feed.json) | Curated spike sorting for allen_mouse415148_probeE |
 
 
-[Browse all recordings](http://ephys1.laboratorybox.org/default?feed=sha1://feb071cc918dab8201f1fc1e0016cbb0dce6250a/feed.json)
+[Browse all recordings](http://ephys1.laboratorybox.org/default?feed=sha1://eab32b0c4b338c29d95b30b9e072cd709af48ae5/feed.json)
 <!-- END DATA TABLE -->
 
 ## Loading into Python and exporting to various formats
