@@ -17,6 +17,13 @@ You can interact with the data in various ways:
 
 The following recordings were generated using [prepare_datasets.py](./scripts/prepare_datasets/prepare_datasets.py).
 
+**NOTE**:
+
+The recording/sorting exploration tool in the web links below is under active
+development, with particular attention to adding new visualizations and improving
+performance. Users may experience load times of several seconds in some cases.
+Thank you for your patience.
+
 <!-- prepare_recording.py -->
 
 <!-- BEGIN DATA TABLE -->
