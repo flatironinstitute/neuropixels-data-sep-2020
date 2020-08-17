@@ -1,0 +1,6 @@
+hither
+scipy
+python-slugify
+spikeextractors
+numpy
+pynwb
