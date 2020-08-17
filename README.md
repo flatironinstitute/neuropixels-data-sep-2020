@@ -51,7 +51,7 @@ Thank you for your patience.
 [Browse all recordings](http://ephys1.laboratorybox.org/default?feed=sha1://eab32b0c4b338c29d95b30b9e072cd709af48ae5/feed.json)
 <!-- END DATA TABLE -->
 
-## Loading into Python and exporting to various formats
+## Loading into **Python** and exporting to various formats
 
 Because electrophysiology recordings can be large, we have created a peer-to-peer sharing system ([kachery-p2p](https://github.com/flatironinstitute/kachery-p2p)) that runs in Linux or Mac and interfaces directly to Python. By running a kachery-p2p daemon on your computer, you are participating in the network for sharing these datasets with other users of the system.
 
@@ -113,6 +113,17 @@ import spikeextractors as se
 # Example export to raw binary .dat
 se.BinDatRecordingExtractor.write_recording(recording, '/output/file.dat')
 ```
+
+## Downloading the data for use in **MATLAB or other languages**
+
+If you plan to do your analysis in python we recommend you use spikeextractors as a container for passing data around as illustrated above. If not, or for other reasons, you can download the data directly to disk using the `download_all.py` script.
+
+e.g.
+```
+pip install -r requirements.txt
+RECORDINGS_OUTPUT_DIR = '../recordings' python scripts download_all.py
+```
+
 
 ## Data from Nick Steinmetz
 
