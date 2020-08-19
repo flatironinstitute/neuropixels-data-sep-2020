@@ -11,7 +11,7 @@ from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_allen_
 
 known_recordings_file = get_recordings_file_path()
 aws_url = 'http://ephys1.laboratorybox.org'
-compute_resource_uri = 'feed://82a4286f85b50866c290fe5650bbe52c507362aee420ba0185b3d9c7fa638da9?name=ccmlin008.flatironinstitute.org'
+compute_resource_uri = 'feed://96b4879d17c55fdd414b1f03e52d9c54c16467488ff42adabedb3c9386ee5397?name=ccmlin008-ephys1-3'
 
 jc = hi.JobCache(use_tempdir=True)
 #jc = None

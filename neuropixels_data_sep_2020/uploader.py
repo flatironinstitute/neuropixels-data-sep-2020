@@ -12,8 +12,8 @@ def file_uploader(thefile: hi.File) -> str:
     import os
     return f"File loaded successfully by {os.uname()[1]}"
 
-def upload_file_to_compute_resource(file_sha1: str) -> str:
-    thefile = hi.File(file_sha1)
+def upload_file_to_compute_resource(file_uri: str) -> str:
+    thefile = hi.File(file_uri)
     with hi.Config(job_cache=None):
         result = file_uploader.run(thefile=thefile)
         hi.wait()

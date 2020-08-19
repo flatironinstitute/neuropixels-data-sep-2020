@@ -109,7 +109,7 @@ def prepare_cortexlab_datasets():
 
 def _keep_good_units(sorting_obj, cluster_groups_csv_uri):
     sorting = LabboxEphysSortingExtractor(sorting_obj)
-    df = pd.read_csv(ka.load_file('sha1://d7d12256973a2d7f48edefdb4d8bb03f68e59aa5/cluster_groups.csv'), delimiter='\t')
+    df = pd.read_csv(kp.load_file(cluster_groups_csv_uri), delimiter='\t')
     df_good = df.loc[df['group'] == 'good']
     good_unit_ids = df_good['cluster_id'].to_numpy().tolist()
     sorting_good = se.SubSortingExtractor(parent_sorting=sorting, unit_ids=good_unit_ids)
