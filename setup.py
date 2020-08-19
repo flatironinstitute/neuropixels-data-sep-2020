@@ -30,7 +30,7 @@ setuptools.setup(
     scripts=[
     ],
     install_requires=[
-        "kachery_p2p>=0.2.0",
+        "kachery_p2p>=0.4.23",
         "spikeextractors"
     ],
     classifiers=[
