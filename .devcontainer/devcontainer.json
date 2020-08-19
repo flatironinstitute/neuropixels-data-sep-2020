@@ -1,0 +1,49 @@
+{
+	"name": "neuropixels-data-sep-2020 dev container",
+	"context": ".",
+	"dockerFile": "Dockerfile",
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"python.pythonPath": "/usr/bin/python",
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": true,
+		"python.linting.pylintPath": "/usr/local/bin/pylint"
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-python.python",
+		"ms-pyright.pyright",
+		"eamodio.gitlens",
+		"njpwerner.autodocstring",
+		"stkb.rewrap",
+		"ms-azuretools.vscode-docker",
+		"ryanluker.vscode-coverage-gutters",
+		"zainchen.json",
+		"github.vscode-pull-request-github",
+		"dbaeumer.vscode-eslint"
+	],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": ".devcontainer/post_create.sh",
+
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode",
+
+	"mounts": [
+		"source=${localWorkspaceFolder}/data,target=/data,type=bind,consistency=delegated",
+	],
+
+	"containerEnv": {
+		"KACHERY_STORAGE_DIR": "/data/kachery-storage",
+		"KACHERY_P2P_CONFIG_DIR": "/data/kachery-p2p-config",
+		"KACHERY_P2P_API_PORT": "15391"
+	},
+
+	"runArgs": [
+		"--privileged",
+		"--net=host"
+	]
+}
