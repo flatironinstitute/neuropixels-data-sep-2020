@@ -7,7 +7,7 @@ import spikeextractors as se
 from ._listify_ndarray import _listify_ndarray
 
 @hi.function('create_subrecording_object', '0.1.1')
-@hi.container('docker://magland/labbox-ephys-processing:latest')
+@hi.container('docker://magland/labbox-ephys-processing:0.2.18')
 def create_subrecording_object(
     recording_object,
     channels,

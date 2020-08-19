@@ -7,7 +7,7 @@ import spikeextractors as se
 from ._listify_ndarray import _listify_ndarray
 
 @hi.function('cortexlab_create_recording_object', '0.1.1')
-@hi.container('docker://magland/labbox-ephys-processing:latest')
+@hi.container('docker://magland/labbox-ephys-processing:0.2.18')
 def cortexlab_create_recording_object(
     bin_uri,
     bin_size, # Later kachery-p2p will allow us to get this information from bin_uri
@@ -48,7 +48,7 @@ def cortexlab_create_recording_object(
     return ret
 
 @hi.function('cortexlab_create_sorting_object', '0.1.3')
-@hi.container('docker://magland/labbox-ephys-processing:latest')
+@hi.container('docker://magland/labbox-ephys-processing:0.2.18')
 def cortexlab_create_sorting_object(
     times_npy_uri,
     labels_npy_uri,

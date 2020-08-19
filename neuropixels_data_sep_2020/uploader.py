@@ -7,7 +7,7 @@ import kachery_p2p as kp
 # ensures that the file actually gets downloaded from the peer network on the rcr.
 # Any container used must use the same $KACHERY_STORAGE_DIR as the surrounding environment.
 @hi.function('file_uploader', '0.1.0')
-@hi.container('docker://magland/labbox-ephys-processing:latest')
+@hi.container('docker://magland/labbox-ephys-processing:0.2.18')
 def file_uploader(thefile: hi.File) -> str:
     import os
     return f"File loaded successfully by {os.uname()[1]}"
