@@ -7,9 +7,8 @@ import datetime
 import os
 from pathlib import Path
 import sys
-from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_allen_datasets, get_recordings_file_path
+from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_allen_datasets
 
-known_recordings_file = get_recordings_file_path()
 aws_url = 'http://ephys1.laboratorybox.org'
 compute_resource_uri = 'feed://96b4879d17c55fdd414b1f03e52d9c54c16467488ff42adabedb3c9386ee5397?name=ccmlin008-ephys1-3'
 
@@ -47,11 +46,11 @@ try:
 finally:
     f.delete()
 
-with open(known_recordings_file, 'w') as fp:
-    json.dump(dict(
-        recordings=le_recordings,
-        sortings=le_sortings
-    ), fp)
+known_recordings_dict = dict(
+    recordings=le_recordings,
+    sortings=le_sortings
+)
+known_recordings_uri = kp.store_object(known_recordings_dict, basename='known_recordings.json')
 
 lines = []
 
@@ -99,5 +98,12 @@ try:
     with open('README.md', 'w') as f:
         f.write(readme_txt)
 except:
-    print('Unable to auto-update README.md. Run this script from the base directory of the repo.')
+    raise Exception('Unable to auto-update README.md. Run this script from the base directory of the repo.')
+
+known_recordings_uri_py_fname = 'neuropixels_data_sep_2020/known_recordings_uri.py'
+if not os.path.exists(known_recordings_uri_py_fname):
+    raise Exception('Unable to auto-update known_recordings_uri.py. Run this script from the base directory of the repo.')
+with open(known_recordings_uri_py_fname, 'w') as f:
+    f.write(f'KNOWN_RECORDINGS_URI = {known_recordings_uri}')
+
 
