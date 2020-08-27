@@ -63,17 +63,26 @@ We have integrated this system with [SpikeInterface](https://github.com/SpikeInt
 [See these instructions](https://github.com/flatironinstitute/kachery-p2p).
 The kachery-p2p tool has been tested on Linux and MacOS.
 
-**Step 2.** Clone and pip-install this repo in development mode (you should use a virtualenv or conda environment):
+**Step 2.** Clone this repo:
 
 ```
 git clone https://github.com/flatironinstitute/neuropixels-data-sep-2020
 cd neuropixels-data-sep-2020
-pip install -e .
 ```
 
+**Step 3.** Create a Conda environment to manage neuropixels-related dependencies, and
+install the neuropixels repository in development mode:
+```
+conda env create -f environment.yml
+conda activate neuropixels-2020
+pip install -e .
+```
 For subsequent updates, run `git pull` and rerun the `pip install -e .`
 
-**Step 3.** Load a recording into a SpikeInterface recording extractor:
+From here on, you should ensure that you run `conda activate neuropixels-2020` before
+trying to use the tools or code from this repository.
+
+**Step 4.** Load a recording into a SpikeInterface recording extractor:
 
 ```python
 # You need to be running the kachery-p2p daemon, flatiron1 channel
