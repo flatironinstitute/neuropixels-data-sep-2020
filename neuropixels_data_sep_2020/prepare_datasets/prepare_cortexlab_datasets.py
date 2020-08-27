@@ -8,7 +8,7 @@ import pandas as pd
 import spikeextractors as se
 from .cortexlab_utils import cortexlab_create_recording_object, cortexlab_create_sorting_object
 from .create_subrecording_object import create_subrecording_object
-from ..uploader import upload_file_to_compute_resource
+from ..uploader import upload_files_to_compute_resource
 from ..extractors import H5SortingExtractorV1
 
 def prepare_cortexlab_datasets():
@@ -24,9 +24,11 @@ def prepare_cortexlab_datasets():
     times_npy_uri = 'sha1://2d8264241321fda3b6c987412b353232068c3e93/spike_times.npy?manifest=b7f91b25b95252cdeb299b8249a622d49eddabcc'
     labels_npy_uri = 'sha1://cd893db02d086b332ee46d56b2373dd0350bf471/spike_clusters.npy?manifest=6efc0362d708fa3a9ae5ce9280898a54e6e5d189'
     cluster_groups_csv_uri = 'sha1://d7d12256973a2d7f48edefdb4d8bb03f68e59aa5/cluster_groups.csv'
-    upload_file_to_compute_resource(times_npy_uri)
-    upload_file_to_compute_resource(labels_npy_uri)
-    upload_file_to_compute_resource(cluster_groups_csv_uri)
+    upload_files_to_compute_resource([
+        times_npy_uri,
+        labels_npy_uri,
+        cluster_groups_csv_uri
+    ])
     S1 = cortexlab_create_sorting_object.run(
         times_npy_uri=times_npy_uri,
         labels_npy_uri=labels_npy_uri,

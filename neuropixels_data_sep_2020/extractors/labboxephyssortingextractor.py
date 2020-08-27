@@ -7,14 +7,6 @@ import hither as hi
 import spikeextractors as se
 from .mdaextractors import MdaSortingExtractor
 
-def _path(x):
-    if type(x) is str:
-        return x
-    elif isinstance(x, hi.File):
-        return x.path
-    else:
-        raise Exception('Cannot get path from:', x)
-
 def _try_mda_create_object(arg: Union[str, dict], samplerate=None) -> Union[None, dict]:
     if isinstance(arg, str):
         path = arg
