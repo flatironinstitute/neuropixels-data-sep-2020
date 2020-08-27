@@ -76,15 +76,18 @@ For subsequent updates, run `git pull` and rerun the `pip install -e .`
 **Step 3.** Load a recording into a SpikeInterface recording extractor:
 
 ```python
+# You need to be running the kachery-p2p daemon, flatiron1 channel
 import neuropixels_data_sep_2020 as nd
 import spikeextractors as se
 
 # Replace this with the desired recording ID from above
 recording_id = 'cortexlab-single-phase-3 (ch 0-7, 10 sec)'
 
-# Note: if the files are not already on your, then you need
+# Note: if the files are not already on your machine, then you need
 # to run a kachery-p2p daemon on the flatiron1 channel.
-recording = nd.load_recording(recording_id)
+# Use download=True to download the entire recording at once
+#    download=False means lazy download
+recording = nd.load_recording(recording_id, download=False)
 
 # recording is a SpikeInterface recording extractor
 # so you can extract information
@@ -127,7 +130,8 @@ se.BinDatRecordingExtractor.write_recording(recording, '/output/file.dat')
 
 ## Downloading the data for use in **MATLAB or other languages**
 
-If you plan to do your analysis in python we recommend you use spikeextractors as a container for passing data around as illustrated above. If not, or for other reasons, you can download the data directly to disk using a `download_all.py` script (in progress).
+If you plan to do your analysis in python we recommend you use spikeextractors as a container for passing data around as illustrated above. If not, or for other reasons, you can download the data directly to disk by editing and running [scripts/download_recordings.py](./scripts/download_recordings.py)
+
 
 
 ## Data from Nick Steinmetz (Cortexlab)

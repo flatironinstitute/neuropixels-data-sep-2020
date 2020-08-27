@@ -26,14 +26,14 @@ def get_valid_sortings() -> List[Any]:
     x = load_known_recordings_dict()
     return x['sortings']
 
-def load_recording(rec_id: str) -> Any:
+def load_recording(rec_id: str, download=False) -> Any:
     valid_recordings: List[Any] = get_valid_recordings()
     for entry in valid_recordings:
         rec_json = f"{rec_id}.json"
         if (rec_id == entry['recordingId'] or rec_id == entry['recordingLabel']
             or rec_json == entry['recordingId'] or rec_json == entry['recordingLabel']):
             uri = entry['recordingPath']
-            recording = LabboxEphysRecordingExtractor(uri, download=False)
+            recording = LabboxEphysRecordingExtractor(uri, download=download)
             return recording
     raise Exception(f"Requested recording with identifier '{rec_id}' is not recognized.")
 

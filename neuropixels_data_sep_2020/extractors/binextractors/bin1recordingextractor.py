@@ -5,7 +5,7 @@ import numpy as np
 class Bin1RecordingExtractor(se.RecordingExtractor):
     extractor_name = 'Bin1RecordingExtractor'
     is_writable = False
-    def __init__(self, *, raw, raw_num_channels, num_frames, samplerate, channel_ids, channel_map, channel_positions, p2p):
+    def __init__(self, *, raw, raw_num_channels, num_frames, samplerate, channel_ids, channel_map, channel_positions, p2p, download=False):
         se.RecordingExtractor.__init__(self)
         
         self._raw = raw
@@ -16,6 +16,9 @@ class Bin1RecordingExtractor(se.RecordingExtractor):
         self._channel_map = channel_map
         self._channel_positions = channel_positions
         self._p2p = p2p
+
+        if download:
+            kp.load_file(self._raw)
         
         for id in self._channel_ids:
             pos = self._channel_positions[str(id)]
