@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import sys
 from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_cortexlab_drift_datasets, prepare_allen_datasets
+from neuropixels_data_sep_2020.uploader import upload_files_to_compute_resource
 
 aws_url = 'http://ephys1.laboratorybox.org'
 compute_resource_uri = 'feed://09b27ce6c71add9fe6effaf351fce98d867d6fa002333a8b06565b0a108fb0ba?name=ephys1'
@@ -52,6 +53,10 @@ known_recordings_dict = dict(
     sortings=le_sortings
 )
 known_recordings_uri = kp.store_object(known_recordings_dict, basename='known_recordings.json')
+
+with hi.RemoteJobHandler(compute_resource_uri=compute_resource_uri) as jh:
+    with hi.Config(job_handler=jh, container=True):
+        upload_files_to_compute_resource([known_recordings_uri, x.get_uri()])
 
 lines = []
 

@@ -28,29 +28,29 @@ Thank you for your patience.
 
 <!-- BEGIN DATA TABLE -->
 
-<!--- Auto-generated at 08/27/2020, 07:37:16-->
+<!--- Auto-generated at 08/27/2020, 07:53:44-->
 | Recording ID | Web link | Description |
 |------ | ---- | ----------- |
-| cortexlab-single-phase-3 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json) | A "Phase3" Neuropixels electrode array was inserted into the brain of an awake, head-fixed mouse for about an hour. |
-| cortexlab-single-phase-3.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3.10sec?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json) | Extracted 10 seconds of data from the beginning of the recording |
-| cortexlab-single-phase-3-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3-ch0-7.10sec?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json) | Extracted a subset of channels and 10 seconds of data from the beginning of the recording |
-| cortexlab-drift-dataset1 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-drift-dataset1?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json) | Neuropixels 2 recording with imposed drift (dataset1). |
-| cortexlab-drift-dataset2 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-drift-dataset2?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json) | Neuropixels 2 recording with imposed drift (dataset2). |
-| allen_mouse419112_probeE | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json) | A one hour neuropixels recording from Allen Institute |
-| allen_mouse415148_probeE | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse415148_probeE?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json) | A one hour neuropixels recording from Allen Institute |
-| allen_mouse419112_probeE-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-ch0-7.10sec?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json) | Subset of channels and first 10 seconds of allen_mouse419112_probeE |
-| allen_mouse419112_probeE-10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-10sec?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json) | First 10 seconds of allen_mouse419112_probeE |
+| cortexlab-single-phase-3 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json) | A "Phase3" Neuropixels electrode array was inserted into the brain of an awake, head-fixed mouse for about an hour. |
+| cortexlab-single-phase-3.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3.10sec?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json) | Extracted 10 seconds of data from the beginning of the recording |
+| cortexlab-single-phase-3-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3-ch0-7.10sec?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json) | Extracted a subset of channels and 10 seconds of data from the beginning of the recording |
+| cortexlab-drift-dataset1 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-drift-dataset1?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json) | Neuropixels 2 recording with imposed drift (dataset1). |
+| cortexlab-drift-dataset2 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-drift-dataset2?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json) | Neuropixels 2 recording with imposed drift (dataset2). |
+| allen_mouse419112_probeE | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json) | A one hour neuropixels recording from Allen Institute |
+| allen_mouse415148_probeE | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse415148_probeE?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json) | A one hour neuropixels recording from Allen Institute |
+| allen_mouse419112_probeE-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-ch0-7.10sec?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json) | Subset of channels and first 10 seconds of allen_mouse419112_probeE |
+| allen_mouse419112_probeE-10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-10sec?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json) | First 10 seconds of allen_mouse419112_probeE |
 
 
 | Sorting ID | Web link | Description |
 |------ | ---- | ----------- |
-| cortexlab-single-phase-3:curated | [view](http://ephys1.laboratorybox.org/default/sorting/cortexlab-single-phase-3:curated?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json) | Curated spike sorting for cortexlab-single-phase-3 |
-| cortexlab-single-phase-3:curated_good | [view](http://ephys1.laboratorybox.org/default/sorting/cortexlab-single-phase-3:curated_good?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json) | Curated spike sorting for cortexlab-single-phase-3 (good units only) |
-| allen_mouse419112_probeE:curated | [view](http://ephys1.laboratorybox.org/default/sorting/allen_mouse419112_probeE:curated?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json) | Curated spike sorting for allen_mouse419112_probeE |
-| allen_mouse415148_probeE:curated | [view](http://ephys1.laboratorybox.org/default/sorting/allen_mouse415148_probeE:curated?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json) | Curated spike sorting for allen_mouse415148_probeE |
+| cortexlab-single-phase-3:curated | [view](http://ephys1.laboratorybox.org/default/sorting/cortexlab-single-phase-3:curated?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json) | Curated spike sorting for cortexlab-single-phase-3 |
+| cortexlab-single-phase-3:curated_good | [view](http://ephys1.laboratorybox.org/default/sorting/cortexlab-single-phase-3:curated_good?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json) | Curated spike sorting for cortexlab-single-phase-3 (good units only) |
+| allen_mouse419112_probeE:curated | [view](http://ephys1.laboratorybox.org/default/sorting/allen_mouse419112_probeE:curated?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json) | Curated spike sorting for allen_mouse419112_probeE |
+| allen_mouse415148_probeE:curated | [view](http://ephys1.laboratorybox.org/default/sorting/allen_mouse415148_probeE:curated?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json) | Curated spike sorting for allen_mouse415148_probeE |
 
 
-[Browse all recordings](http://ephys1.laboratorybox.org/default?feed=sha1://5f1dad33f30081ce1206c10c668cd31936179733/feed.json)
+[Browse all recordings](http://ephys1.laboratorybox.org/default?feed=sha1://0e21c51ee33df3921049bdee7c79fe271aefe746/feed.json)
 <!-- END DATA TABLE -->
 
 ## Loading into **Python** and exporting to various formats
@@ -130,11 +130,38 @@ se.BinDatRecordingExtractor.write_recording(recording, '/output/file.dat')
 If you plan to do your analysis in python we recommend you use spikeextractors as a container for passing data around as illustrated above. If not, or for other reasons, you can download the data directly to disk using a `download_all.py` script (in progress).
 
 
-## Data from Nick Steinmetz
+## Data from Nick Steinmetz (Cortexlab)
 
 Single Phase 3 dataset source data: http://data.cortexlab.net/singlePhase3
 
 <!-- Source data kachery URI: `sha1dir://d40edb4e52ad5abef2c1689f7b04164fbf65271b.cortexlab-single-phase-3` -->
+
+Recordings with imposed drift at known times:
+
+* cortexlab-drift-dataset1 (see above)
+    - Manip. timestamps: `sha1://1117aac1f15e441fc82854a736e52e4b87e6d90c/dataset1/manip.timestamps_p2.npy`
+    - Manip. positions: `sha1://9d4e8e9265573707cd1890eefa50fda6a8bd8ae5/manip.positions.npy`
+* cortexlab-drift-dataset2 (see above)
+    - Manip. timestamps: `sha1://b03ea67a69cbbcba214582cf6de1154bcf6b1f92/manip.timestamps.npy`
+    - Manip. positions: `sha1://9d4e8e9265573707cd1890eefa50fda6a8bd8ae5/manip.positions.npy`
+
+The following Python snippet can be used to load the timestamps and positions of the manipulated drift
+
+```python
+# Make sure you have the kachery-p2p daemon running
+import kachery_p2p as kp
+
+# Note: these are from cortexlab-drift-dataset1
+timestamps_uri = 'sha1://1117aac1f15e441fc82854a736e52e4b87e6d90c/dataset1/manip.timestamps_p2.npy'
+positions_uri = 'sha1://9d4e8e9265573707cd1890eefa50fda6a8bd8ae5/manip.positions.npy'
+
+timestamps = kp.load_npy(timestamps_uri).squeeze()
+positions = kp.load_npy(positions_uri).squeeze()
+
+print(timestamps) # array of shape (22,) [0, 580.1500031, ...]
+print(positions) # array of shape (22,) [0, 0, 50, 0, 50, ...]
+```
+
 
 ## Data from Josh Siegle
 
