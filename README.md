@@ -184,12 +184,3 @@ Each unit was then manually inspected to confirm its quality.
 
 There were a total of 76 high-quality units across both datasets.
 
-<!-- * mouse419112_probeE
-    - curated_unit_times.npy: sha1://57029ae68643881f5d4015397be87ba0d4815b52/curated_unit_times.npy
-    - curated_unit_IDs.npy: sha1://61762d8f0bdac57db64ceec1636e0009af0f02ef/curated_unit_IDs.npy?manifest=371f609a04189947e45ea8f29e60b0fd2edb1a69
-    - curated_unit_channels.npy: sha1://8b3a98b9d45c1c62eb4402245800e278873bd8e5/curated_unit_channels.npy
-    - continuous.dat: sha1://39ae3fcccd3803170dd97fc9a8799e7169214419/continuous.dat?manifest=31942d7d97ff3a46fa1dbca72d8dc048bd65d5ce
-
-* mouse415148_probeE
-    - curated_unit_times.npy: sha1://4c717829e3ce6530349a38bd5f72fac216916276/curated_unit_times.npy -->
-

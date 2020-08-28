@@ -9,8 +9,8 @@ from .create_subrecording_object import create_subrecording_object
 from .create_subrecording_object import create_subrecording_object
 
 def prepare_allen_datasets():
-    bin1_uri = 'sha1://39ae3fcccd3803170dd97fc9a8799e7169214419/continuous.dat?manifest=31942d7d97ff3a46fa1dbca72d8dc048bd65d5ce'
-    bin2_uri = 'sha1://c5acd91cfde60bc8ba619f5b03245fe6c034f682/continuous.dat?manifest=8c99b1ffd502dc5281fc569e652d45b787df5ebc'
+    bin1_uri = 'sha1://39ae3fcccd3803170dd97fc9a8799e7169214419/allen_mouse419112_probeE.dat?manifest=f021b78c2fac87af872d6e6cf3f7505194395692'
+    bin2_uri = 'sha1://c5acd91cfde60bc8ba619f5b03245fe6c034f682/allen_mouse415148_probeE.dat?manifest=8c99b1ffd502dc5281fc569e652d45b787df5ebc'
     channel_info_uri = 'sha1://349d7f018f4f09da5c230a9d46e07c2aeffbc1e2/channel_info.csv'
     channel_positions = _load_channel_positions_from_csv(channel_info_uri)
     X1 = dict(

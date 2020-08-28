@@ -22,6 +22,7 @@ with hi.RemoteJobHandler(compute_resource_uri=compute_resource_uri) as jh:
         le_recordings1, le_sortings1 = prepare_cortexlab_datasets()
         le_recordings2 = prepare_cortexlab_drift_datasets()
         le_recordings3, le_sortings3 = prepare_allen_datasets()
+        hi.wait()
 
 le_recordings = le_recordings1 + le_recordings2 + le_recordings3
 le_sortings = le_sortings1 + le_sortings3
@@ -57,6 +58,7 @@ known_recordings_uri = kp.store_object(known_recordings_dict, basename='known_re
 with hi.RemoteJobHandler(compute_resource_uri=compute_resource_uri) as jh:
     with hi.Config(job_handler=jh, container=True):
         upload_files_to_compute_resource([known_recordings_uri, x.get_uri()])
+        hi.wait()
 
 lines = []
 
