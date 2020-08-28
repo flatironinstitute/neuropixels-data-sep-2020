@@ -81,7 +81,7 @@ import neuropixels_data_sep_2020 as nd
 import spikeextractors as se
 
 # sorting will be a se.SortingExtractor object
-sorting = nd.load_sorting('cortexlab-single-phase-3:curated')
+sorting = nd.load_sorting('cortexlab-single-phase-3:curated') # use a sorting ID from table above
 unit_ids = sorting.get_unit_ids()
 print(f'Num. units in sorting: {len(unit_ids)}')
 
