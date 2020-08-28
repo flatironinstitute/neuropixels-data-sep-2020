@@ -73,7 +73,29 @@ pip install -e .
 
 For subsequent updates, run `git pull` and rerun the `pip install -e .`
 
-**Step 3.** Load a recording into a SpikeInterface recording extractor:
+**Step 3.** Load a sorting into a SpikeInterface sorting extractor:
+
+```python
+# You need to be running the kachery-p2p daemon, flatiron1 channel
+import neuropixels_data_sep_2020 as nd
+import spikeextractors as se
+
+# sorting will be a se.SortingExtractor object
+sorting = nd.load_sorting('cortexlab-single-phase-3:curated')
+unit_ids = sorting.get_unit_ids()
+print(f'Num. units in sorting: {len(unit_ids)}')
+
+# load a spike train for a particular unit
+unit_id = unit_ids[3]
+st = sorting.get_unit_spike_train(unit_id=unit_id)
+print(f'Num. events in unit {unit_id}: {len(st)}')
+
+# The output should be:
+# Num. units in sorting: 675
+# Num. events in unit 8: 6022
+```
+
+**Step 4.** Load a recording into a SpikeInterface recording extractor:
 
 ```python
 # You need to be running the kachery-p2p daemon, flatiron1 channel
