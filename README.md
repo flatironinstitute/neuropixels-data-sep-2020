@@ -1,15 +1,15 @@
-**Note**: This repo is in preparation
-
 # neuropixels-data-sep-2020
 Example electrophysiology recordings for the purpose of developing and optimizing spike sorting algorithms for neuropixels probes. Methods for dealing with drift are of particular interest.
 
+**Note**: This repo is in preparation. We will be adding more recordings and curated sortings over time. We are also improving the reliability of the peer-to-peer file transfer as well as adding functionality to the web GUI.
+
 ## Overview
 
-This repository contains links to some ephys recordings using neuropixels probes together with curated spike sorting results. It also contains two recordings with known imposed drift and two hybrid pseudo-ground truth neuropixels recordings. These may be used to evaluate the performance of spike sorting methods.
+This repository contains links to some ephys recordings using neuropixels probes together with curated spike sorting results. It also contains two recordings with known imposed drift. In the future, it will contain hybrid pseudo-ground truth neuropixels recordings. These may be used to evaluate the performance of spike sorting methods. We will be adding to this collection over time.
 
 You can interact with the data in various ways:
 
-* Visualize data within the web browser (links below)
+* Visualize data within the web browser (links below) - (this application will also available to run locally, or self-hosted)
 * Load data directly into Python [SpikeInterface](https://github.com/SpikeInterface) objects (more information below)
 * Download files from their original source (where available in links below)
 
@@ -21,8 +21,8 @@ The following recordings were generated using [prepare_datasets.py](./scripts/pr
 
 The recording/sorting exploration tool in the web links below is under active
 development, with particular attention to adding new visualizations and improving
-performance. Users may experience load times of several seconds in some cases.
-Thank you for your patience.
+performance. Users may experience long load times in some cases. Over time the
+responsiveness will improve. Thank you for your patience.
 
 <!-- prepare_recording.py -->
 
@@ -95,6 +95,8 @@ print(f'Num. events in unit {unit_id}: {len(st)}')
 # Num. events in unit 8: 6022
 ```
 
+See also: [./scripts/load_all_sortings.py](./scripts/load_all_sortings.py)
+
 **Step 4.** Load a recording into a SpikeInterface recording extractor:
 
 ```python
@@ -152,9 +154,7 @@ se.BinDatRecordingExtractor.write_recording(recording, '/output/file.dat')
 
 ## Downloading the data for use in **MATLAB or other languages**
 
-If you plan to do your analysis in python we recommend you use spikeextractors as a container for passing data around as illustrated above. If not, or for other reasons, you can download the data directly to disk by editing and running [scripts/download_recordings.py](./scripts/download_recordings.py)
-
-
+If you plan to do your analysis in python we recommend you use spikeextractors as a container for passing data around as illustrated above. If not, or for other reasons, you can download the data directly to disk by editing and running [scripts/download_recordings.py](./scripts/download_recordings.py). In that case you may want to think about downloading a subset of the data using se.SubRecordingExtractor for testing prior to loading the entire files.
 
 ## Data from Nick Steinmetz (Cortexlab)
 
