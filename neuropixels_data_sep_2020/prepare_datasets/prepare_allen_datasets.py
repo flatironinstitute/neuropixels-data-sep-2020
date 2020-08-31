@@ -101,7 +101,7 @@ def prepare_allen_datasets():
     le_recordings.append(dict(
         recordingId='allen_mouse415148_probeE',
         recordingLabel='allen_mouse415148_probeE (full)',
-        recordingPath=ka.store_object(X1, basename='allen_mouse419112_probeE.json'),
+        recordingPath=ka.store_object(XX2, basename='allen_mouse415148_probeE.json'),
         recordingObject=XX2,
         description='''
         A one hour neuropixels recording from Allen Institute

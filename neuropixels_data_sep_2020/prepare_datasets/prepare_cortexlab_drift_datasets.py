@@ -37,7 +37,7 @@ def prepare_cortexlab_drift_datasets():
     le_recordings.append(dict(
         recordingId='cortexlab-drift-dataset2',
         recordingLabel='cortexlab-drift-dataset2',
-        recordingPath=ka.store_object(recording_obj_dataset1, basename='cortexlab-drift-dataset2.json'),
+        recordingPath=ka.store_object(recording_obj_dataset2, basename='cortexlab-drift-dataset2.json'),
         recordingObject=recording_obj_dataset2,
         description='''
         Neuropixels 2 recording with imposed drift (dataset2).
