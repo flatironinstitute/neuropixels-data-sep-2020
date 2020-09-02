@@ -7,7 +7,7 @@ import datetime
 import os
 from pathlib import Path
 import sys
-from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_cortexlab_drift_datasets, prepare_allen_datasets
+from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_cortexlab_drift_datasets, prepare_allen_datasets, prepare_svoboda_datasets
 from neuropixels_data_sep_2020.uploader import upload_files_to_compute_resource
 import labbox_ephys as le
 
@@ -23,10 +23,11 @@ with hi.RemoteJobHandler(compute_resource_uri=compute_resource_uri) as jh:
         le_recordings1, le_sortings1 = prepare_cortexlab_datasets()
         le_recordings2 = prepare_cortexlab_drift_datasets()
         le_recordings3, le_sortings3 = prepare_allen_datasets()
+        le_recordings4, le_sortings4 = prepare_svoboda_datasets()
         hi.wait()
 
-le_recordings = le_recordings1 + le_recordings2 + le_recordings3
-le_sortings = le_sortings1 + le_sortings3
+le_recordings = le_recordings1 + le_recordings2 + le_recordings3 + le_recordings4
+le_sortings = le_sortings1 + le_sortings3 + le_sortings4
 
 try:
     f = kp.create_feed()
