@@ -59,23 +59,47 @@ Because electrophysiology recordings can be large, we have created a peer-to-pee
 
 We have integrated this system with [SpikeInterface](https://github.com/SpikeInterface) which allows lazy loading of recordings into RecordingExtractor objects.
 
-**Step 1.** You must be running a kachery-p2p daemon on the `flatiron1` channel.
-[See these instructions](https://github.com/flatironinstitute/kachery-p2p).
-The kachery-p2p tool has been tested on Linux and MacOS.
+**Prerequisites: Linux or MacOS**
 
-**Step 2.** Clone and pip-install this repo in development mode (you should use a virtualenv or conda environment):
+**Step 1.** Clone and install this repo in development mode
 
-```
+```bash
 git clone https://github.com/flatironinstitute/neuropixels-data-sep-2020
 cd neuropixels-data-sep-2020
+```
+
+We recommend you create a conda environment based on the `environment.yml` file distributed in this repo:
+
+```bash
+conda env create -f environment.yml
+conda activate neuropixels-2020
+```
+
+Install this repo in editable (development) mode:
+
+```
 pip install -e .
 ```
 
+If using conda, be sure that you always activate the conda environment prior to working with this repo.
+
 For subsequent updates, run `git pull` and rerun the `pip install -e .`
 
-**Step 3.** Load a sorting into a SpikeInterface sorting extractor:
+**Step 2.** You must be running a kachery-p2p daemon on the `flatiron1` channel.
 
 ```python
+kachery-p2p-start-daemon --channel flatiron1
+```
+
+Keep this daemon running in a terminal. You may want to use tmux or a similar tool to keep this daemon running even if the terminal is closed.
+
+For more information, [see these instructions](https://github.com/flatironinstitute/kachery-p2p). The kachery-p2p tool has been tested on Linux and MacOS.
+
+**Step 3.** Load a sorting into a SpikeInterface sorting extractor using the following example script:
+
+```python
+#!/usr/bin/env python3
+
 # You need to be running the kachery-p2p daemon, flatiron1 channel
 import neuropixels_data_sep_2020 as nd
 import spikeextractors as se
@@ -142,19 +166,9 @@ Once a dataset is loaded into a SpikeInterface extractor, you can
 interact with it directly in Python. The data will be
 lazy-loaded from the peer-to-peer network.
 
-You can create subextractors as above, and export to any of the
-[formats supported by SpikeExtractors](https://github.com/SpikeInterface/spikeextractors/tree/master/spikeextractors/extractors).
-
-```python
-import spikeextractors as se
-
-# Example export to raw binary .dat
-se.BinDatRecordingExtractor.write_recording(recording, '/output/file.dat')
-```
-
 ## Downloading the data for use in **MATLAB or other languages**
 
-If you plan to do your analysis in python we recommend you use spikeextractors as a container for passing data around as illustrated above. If not, or for other reasons, you can download the data directly to disk by editing and running [scripts/download_recordings.py](./scripts/download_recordings.py). In that case you may want to think about downloading a subset of the data using se.SubRecordingExtractor for testing prior to loading the entire files.
+If you plan to do your analysis in python we recommend you use spikeextractors as a container for passing data around as illustrated above. If not, or for other reasons, you can download the data directly to disk by editing and running [scripts/download_recordings.py](./scripts/download_recordings.py). In that case you may want to think about downloading a subset of the data using se.SubRecordingExtractor for testing prior to loading the entire files. Similarly, for the curated sortings, see [scripts/download_all_sortings.py](./scripts/download_all_sortings.py).
 
 ## Data from Nick Steinmetz (Cortexlab)
 

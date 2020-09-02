@@ -1,0 +1,20 @@
+name: neuropixels-2020
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8.*
+  - pip=20.1.*
+  - pip:
+    - click
+    - h5py
+    - hither
+    - inquirer
+    - kachery
+    - kachery-p2p
+    - mkl
+    - pynwb
+    - spikeextractors
+  - numpy>=1.19.*
+  - nodejs>=14.7.0
+  - scipy=1.5.*
