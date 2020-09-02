@@ -166,16 +166,6 @@ Once a dataset is loaded into a SpikeInterface extractor, you can
 interact with it directly in Python. The data will be
 lazy-loaded from the peer-to-peer network.
 
-You can create subextractors as above, and export to any of the
-[formats supported by SpikeExtractors](https://github.com/SpikeInterface/spikeextractors/tree/master/spikeextractors/extractors).
-
-```python
-import spikeextractors as se
-
-# Example export to raw binary .dat
-se.BinDatRecordingExtractor.write_recording(recording, '/output/file.dat')
-```
-
 ## Downloading the data for use in **MATLAB or other languages**
 
 If you plan to do your analysis in python we recommend you use spikeextractors as a container for passing data around as illustrated above. If not, or for other reasons, you can download the data directly to disk by editing and running [scripts/download_recordings.py](./scripts/download_recordings.py). In that case you may want to think about downloading a subset of the data using se.SubRecordingExtractor for testing prior to loading the entire files.
