@@ -9,6 +9,7 @@ from pathlib import Path
 import sys
 from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_cortexlab_drift_datasets, prepare_allen_datasets
 from neuropixels_data_sep_2020.uploader import upload_files_to_compute_resource
+import labbox_ephys as le
 
 aws_url = 'http://ephys1.laboratorybox.org'
 compute_resource_uri = 'feed://09b27ce6c71add9fe6effaf351fce98d867d6fa002333a8b06565b0a108fb0ba?name=ephys1'
@@ -59,6 +60,19 @@ with hi.RemoteJobHandler(compute_resource_uri=compute_resource_uri) as jh:
     with hi.Config(job_handler=jh, container=True):
         upload_files_to_compute_resource([known_recordings_uri, x.get_uri()])
         hi.wait()
+
+print('Preparing snippets h5 files')
+with hi.RemoteJobHandler(compute_resource_uri=compute_resource_uri) as jh:
+    with hi.Config(job_handler=jh, container=True):
+        for s in le_sortings:
+            print(f'Preparing snippets h5 for {s["sortingId"]}')
+            recording_object = s['recordingObject']
+            sorting_object = s['sortingObject']
+            le.prepare_snippets_h5.run(
+                recording_object=recording_object,
+                sorting_object=sorting_object
+            )
+            hi.wait()
 
 lines = []
 

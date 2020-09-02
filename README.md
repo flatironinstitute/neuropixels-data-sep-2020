@@ -59,23 +59,47 @@ Because electrophysiology recordings can be large, we have created a peer-to-pee
 
 We have integrated this system with [SpikeInterface](https://github.com/SpikeInterface) which allows lazy loading of recordings into RecordingExtractor objects.
 
-**Step 1.** You must be running a kachery-p2p daemon on the `flatiron1` channel.
-[See these instructions](https://github.com/flatironinstitute/kachery-p2p).
-The kachery-p2p tool has been tested on Linux and MacOS.
+**Prerequisites: Linux or MacOS**
 
-**Step 2.** Clone and pip-install this repo in development mode (you should use a virtualenv or conda environment):
+**Step 1.** Clone and install this repo in development mode
 
-```
+```bash
 git clone https://github.com/flatironinstitute/neuropixels-data-sep-2020
 cd neuropixels-data-sep-2020
+```
+
+We recommend you create a conda environment based on the `environment.yml` file distributed in this repo:
+
+```bash
+conda env create -f environment.yml
+conda activate neuropixels-2020
+```
+
+Install this repo in editable (development) mode:
+
+```
 pip install -e .
 ```
 
+If using conda, be sure that you always activate the conda environment prior to working with this repo.
+
 For subsequent updates, run `git pull` and rerun the `pip install -e .`
 
-**Step 3.** Load a sorting into a SpikeInterface sorting extractor:
+**Step 2.** You must be running a kachery-p2p daemon on the `flatiron1` channel.
 
 ```python
+kachery-p2p-start-daemon --channel flatiron1
+```
+
+Keep this daemon running in a terminal. You may want to use tmux or a similar tool to keep this daemon running even if the terminal is closed.
+
+For more information, [see these instructions](https://github.com/flatironinstitute/kachery-p2p). The kachery-p2p tool has been tested on Linux and MacOS.
+
+**Step 3.** Load a sorting into a SpikeInterface sorting extractor using the following example script:
+
+```python
+#!/usr/bin/env python3
+
 # You need to be running the kachery-p2p daemon, flatiron1 channel
 import neuropixels_data_sep_2020 as nd
 import spikeextractors as se
