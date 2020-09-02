@@ -168,7 +168,7 @@ lazy-loaded from the peer-to-peer network.
 
 ## Downloading the data for use in **MATLAB or other languages**
 
-If you plan to do your analysis in python we recommend you use spikeextractors as a container for passing data around as illustrated above. If not, or for other reasons, you can download the data directly to disk by editing and running [scripts/download_recordings.py](./scripts/download_recordings.py). In that case you may want to think about downloading a subset of the data using se.SubRecordingExtractor for testing prior to loading the entire files.
+If you plan to do your analysis in python we recommend you use spikeextractors as a container for passing data around as illustrated above. If not, or for other reasons, you can download the data directly to disk by editing and running [scripts/download_recordings.py](./scripts/download_recordings.py). In that case you may want to think about downloading a subset of the data using se.SubRecordingExtractor for testing prior to loading the entire files. Similarly, for the curated sortings, see [scripts/download_all_sortings.py](./scripts/download_all_sortings.py).
 
 ## Data from Nick Steinmetz (Cortexlab)
 
