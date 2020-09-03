@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 
-from neuropixels_data_sep_2020.extractors.labboxephyssortingextractor import LabboxEphysSortingExtractor
+import numpy as np
 import hither as hi
 import kachery as ka
 import kachery_p2p as kp
 import pandas as pd
 import spikeextractors as se
-from .cortexlab_utils import cortexlab_create_recording_object, cortexlab_create_sorting_object
 from .create_subrecording_object import create_subrecording_object
 from ..uploader import upload_files_to_compute_resource
-from ..extractors import H5SortingExtractorV1
+from .cortexlab_utils import cortexlab_create_recording_object
+from ..extractors.labboxephysrecordingextractor import LabboxEphysRecordingExtractor
+from ..extractors.labboxephyssortingextractor import LabboxEphysSortingExtractor
 
 def prepare_cortexlab_datasets():
     R1 = cortexlab_create_recording_object.run(
@@ -24,15 +25,13 @@ def prepare_cortexlab_datasets():
     times_npy_uri = 'sha1://2d8264241321fda3b6c987412b353232068c3e93/spike_times.npy?manifest=b7f91b25b95252cdeb299b8249a622d49eddabcc'
     labels_npy_uri = 'sha1://cd893db02d086b332ee46d56b2373dd0350bf471/spike_clusters.npy?manifest=6efc0362d708fa3a9ae5ce9280898a54e6e5d189'
     cluster_groups_csv_uri = 'sha1://d7d12256973a2d7f48edefdb4d8bb03f68e59aa5/cluster_groups.csv'
-    upload_files_to_compute_resource([
-        times_npy_uri,
-        labels_npy_uri,
-        cluster_groups_csv_uri
-    ])
-    S1 = cortexlab_create_sorting_object.run(
-        times_npy_uri=times_npy_uri,
-        labels_npy_uri=labels_npy_uri,
-        samplerate=30000
+    S1 = dict(
+        sorting_format='npy1',
+        data=dict(
+            times_npy_uri=times_npy_uri,
+            labels_npy_uri=labels_npy_uri,
+            samplerate=30000
+        )
     )
     R2 = create_subrecording_object.run(
         recording_object=R1,
@@ -48,7 +47,6 @@ def prepare_cortexlab_datasets():
     )
     hi.wait()
     R1 = R1.get_result()
-    S1 = S1.get_result()
     R2 = R2.get_result()
     R3 = R3.get_result()
 
@@ -109,18 +107,38 @@ def prepare_cortexlab_datasets():
     ))
     return le_recordings, le_sortings
 
+def _create_npy1_sorting_object(*, sorting):
+    unit_ids = sorting.get_unit_ids()
+    spike_trains = [np.array(sorting.get_unit_spike_train(unit_id=unit_id)).squeeze() for unit_id in unit_ids]
+    spike_labels = [unit_id * np.ones((len(spike_trains[ii]),)) for ii, unit_id in enumerate(unit_ids)]
+    all_times = np.concatenate(spike_trains)
+    all_labels = np.concatenate(spike_labels)
+    sort_inds = np.argsort(all_times)
+    all_times = all_times[sort_inds]
+    all_labels = all_labels[sort_inds]
+    return dict(
+        sorting_format='npy1',
+        data=dict(
+            times_npy_uri=ka.store_npy(all_times),
+            labels_npy_uri=ka.store_npy(all_labels),
+            samplerate=sorting.get_sampling_frequency()
+        )
+    )
+
 def _keep_good_units(sorting_obj, cluster_groups_csv_uri):
     sorting = LabboxEphysSortingExtractor(sorting_obj)
     df = pd.read_csv(kp.load_file(cluster_groups_csv_uri), delimiter='\t')
     df_good = df.loc[df['group'] == 'good']
     good_unit_ids = df_good['cluster_id'].to_numpy().tolist()
     sorting_good = se.SubSortingExtractor(parent_sorting=sorting, unit_ids=good_unit_ids)
-    with hi.TemporaryDirectory() as tmpdir:
-        save_path = tmpdir + '/sorting.h5'
-        H5SortingExtractorV1.write_sorting(sorting=sorting_good, save_path=save_path)
-        return dict(
-            sorting_format='h5_v1',
-            data=dict(
-                h5_path=ka.store_file(save_path)
-            )
-        )
+    return _create_npy1_sorting_object(sorting=sorting_good)
+    
+    # with hi.TemporaryDirectory() as tmpdir:
+    #     save_path = tmpdir + '/sorting.h5'
+    #     H5SortingExtractorV1.write_sorting(sorting=sorting_good, save_path=save_path)
+    #     return dict(
+    #         sorting_format='h5_v1',
+    #         data=dict(
+    #             h5_path=ka.store_file(save_path)
+    #         )
+    #     )

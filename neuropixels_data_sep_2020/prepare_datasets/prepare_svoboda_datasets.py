@@ -1,8 +1,8 @@
 import kachery as ka
 import kachery_p2p as kp
 import scipy.io as sio
+import numpy as np
 from ..uploader import upload_files_to_compute_resource
-from .cortexlab_utils import cortexlab_create_sorting_object
 
 def prepare_svoboda_datasets():
     # A Phase 3B Neuropixels probe was inserted 2.9 mm into secondary motor cortex of an awake,
@@ -62,16 +62,22 @@ def prepare_recording(
         meta_uri
 ):
     samplerate, chanmap, xcoords, ycoords, spike_times, spike_labels = load_info_from_mat(mat_uri)
-
-    upload_files_to_compute_resource([mat_uri, meta_uri])
+    
+    # exclude clusters 0 and -1
+    spike_inds = np.where(spike_labels > 0)[0]
+    spike_times = spike_times[spike_inds]
+    spike_labels = spike_labels[spike_inds]
 
     times_npy_uri = ka.store_npy(spike_times)
     labels_npy_uri = ka.store_npy(spike_labels)
 
-    sorting_object = cortexlab_create_sorting_object(
-        times_npy_uri=times_npy_uri,
-        labels_npy_uri=labels_npy_uri,
-        samplerate=samplerate
+    sorting_object = dict(
+        sorting_format='npy1',
+        data=dict(
+            times_npy_uri=times_npy_uri,
+            labels_npy_uri=labels_npy_uri,
+            samplerate=samplerate
+        )
     )
 
     num_frames = bin_file_size / (raw_num_channels * 2)

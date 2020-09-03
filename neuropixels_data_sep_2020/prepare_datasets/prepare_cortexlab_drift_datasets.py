@@ -47,7 +47,6 @@ def prepare_cortexlab_drift_datasets():
     return le_recordings
 
 def prepare_recording(*, bin_uri, bin_file_size, raw_num_channels, chanmap_mat_uri, manip_timestamps_uri, manip_positions_uri, meta_uri):
-    upload_files_to_compute_resource([chanmap_mat_uri, manip_timestamps_uri, manip_positions_uri, meta_uri])
     manip_timestamps = kp.load_npy(manip_timestamps_uri)
     manip_positions = kp.load_npy(manip_positions_uri)
     num_frames = bin_file_size / (raw_num_channels * 2)

@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 
-from neuropixels_data_sep_2020.uploader import upload_files_to_compute_resource
 import hither as hi
 import kachery as ka
 import kachery_p2p as kp
-from .cortexlab_utils import cortexlab_create_sorting_object
-from .create_subrecording_object import create_subrecording_object
 from .create_subrecording_object import create_subrecording_object
 
 def prepare_allen_datasets():
@@ -43,30 +40,26 @@ def prepare_allen_datasets():
     times1_npy_uri = 'sha1://57029ae68643881f5d4015397be87ba0d4815b52/curated_unit_times.npy?manifest=80b52bf7cd37ef7fb0d4ba5d1dfa543ffb207ce1'
     labels1_npy_uri = 'sha1://61762d8f0bdac57db64ceec1636e0009af0f02ef/curated_unit_IDs.npy?manifest=f716950fadb97a5a154d8762220194af6381e2c1'
     unit_channels1_npy_uri = 'sha1://8b3a98b9d45c1c62eb4402245800e278873bd8e5/curated_unit_channels.npy?manifest=91e899e3d4649f3ae457f6bf0926211dea8aa8fe'
-    upload_files_to_compute_resource([
-        times1_npy_uri,
-        labels1_npy_uri,
-        unit_channels1_npy_uri
-    ])
-    S1 = cortexlab_create_sorting_object.run(
-        times_npy_uri=times1_npy_uri,
-        labels_npy_uri=labels1_npy_uri,
-        samplerate=30000
+    S1 = dict(
+        sorting_format='npy1',
+        data=dict(
+            times_npy_uri=times1_npy_uri,
+            labels_npy_uri=labels1_npy_uri,
+            samplerate=30000
+        )
     )
 
     times2_npy_uri = 'sha1://4c717829e3ce6530349a38bd5f72fac216916276/curated_unit_times.npy?manifest=557d7cf852892b6f333b9355a3ea2293558b2a29'
     labels2_npy_uri = 'sha1://7f2079292b1ef29264b9152073d09dfa3b4dcbe7/curated_unit_channels.npy?manifest=2b35e2b83c9af0431b8aa1ab69e1846e21f24668'
     unit_channels2_npy_uri = 'sha1://f55da958a7725edf8bde63eecf1d53edcb9de76d/curated_unit_IDs.npy?manifest=e028ca15c01ea5f53e2bd341ab001741e7842084'
-    upload_files_to_compute_resource([
-        times2_npy_uri,
-        labels2_npy_uri,
-        unit_channels2_npy_uri
-    ])
-    S2 = cortexlab_create_sorting_object.run(
-        times_npy_uri=times2_npy_uri,
-        labels_npy_uri=labels2_npy_uri,
-        samplerate=30000
-    )    
+    S2 = dict(
+        sorting_format='npy1',
+        data=dict(
+            times_npy_uri=times2_npy_uri,
+            labels_npy_uri=labels2_npy_uri,
+            samplerate=30000
+        )
+    )
 
     X1a = create_subrecording_object.run(
         recording_object=X1,
@@ -81,8 +74,6 @@ def prepare_allen_datasets():
         end_frame=30000 * 10
     )
     hi.wait()
-    S1 = S1.get_result()
-    S2 = S2.get_result()
     X1a = X1a.get_result()
     X1b = X1b.get_result()
 
