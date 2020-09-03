@@ -27,11 +27,8 @@ We are very grateful for the following individuals who have contributed data to 
 
 The following recordings were generated using [prepare_datasets.py](./scripts/prepare_datasets/prepare_datasets.py) (a fully reproducible [hither](https://github.com/flatironinstitute/hither) script).
 
-**NOTE**:
-
-The recording/sorting exploration tool in the web links below is under active
-development. Over time the responsiveness will improve.
-Thank you for your patience.
+*The recording/sorting exploration tool in the web links below is under active
+development. Over time the responsiveness will improve. Thank you for your patience.*
 
 <!-- prepare_recording.py -->
 
