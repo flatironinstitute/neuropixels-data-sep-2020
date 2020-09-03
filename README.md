@@ -1,7 +1,7 @@
 # neuropixels-data-sep-2020
 Example electrophysiology recordings for the purpose of developing and optimizing spike sorting algorithms for neuropixels probes. Methods for dealing with drift are of particular interest.
 
-**Note**: This repo is in preparation. We will be adding more recordings and curated sortings over time. We are also improving the reliability of the peer-to-peer file transfer as well as adding functionality to the web GUI.
+This repo is in preparation. We will be adding more recordings and curated sortings over time. We are also improving the reliability of the peer-to-peer file transfer as well as adding functionality to the web GUI.
 
 ## Overview
 
@@ -15,14 +15,23 @@ You can interact with the data in various ways:
 
 ## Datasets
 
-The following recordings were generated using [prepare_datasets.py](./scripts/prepare_datasets/prepare_datasets.py).
+We are very grateful for the following individuals who have contributed data to this project:
+
+* Nick Steinmetz (CortexLab)
+    - [Curated Phase 3 Neuropixels recording](./doc/cortexlab1.md)
+    - [Neuropixels 2.0 recordings with periods of known imposed displacements](./doc/cortexlab1.md)
+* Josh Siegle (Allen Institute)
+    - [Curated Neuropixels recordings](./doc/allen1.md)
+* Susu Chen (Karel Svoboda lab)
+    - [Curated Phase 3B Neuropixels recording](./doc/svoboda1.md)
+
+The following recordings were generated using [prepare_datasets.py](./scripts/prepare_datasets/prepare_datasets.py) (a fully reproducible [hither](https://github.com/flatironinstitute/hither) script).
 
 **NOTE**:
 
 The recording/sorting exploration tool in the web links below is under active
-development, with particular attention to adding new visualizations and improving
-performance. Users may experience long load times in some cases. Over time the
-responsiveness will improve. Thank you for your patience.
+development. Over time the responsiveness will improve.
+Thank you for your patience.
 
 <!-- prepare_recording.py -->
 
@@ -171,54 +180,4 @@ lazy-loaded from the peer-to-peer network.
 ## Downloading the data for use in **MATLAB or other languages**
 
 If you plan to do your analysis in python we recommend you use spikeextractors as a container for passing data around as illustrated above. If not, or for other reasons, you can download the data directly to disk by editing and running [scripts/download_recordings.py](./scripts/download_recordings.py). In that case you may want to think about downloading a subset of the data using se.SubRecordingExtractor for testing prior to loading the entire files. Similarly, for the curated sortings, see [scripts/download_all_sortings.py](./scripts/download_all_sortings.py).
-
-## Data from Nick Steinmetz (Cortexlab)
-
-Single Phase 3 dataset source data: http://data.cortexlab.net/singlePhase3
-
-<!-- Source data kachery URI: `sha1dir://d40edb4e52ad5abef2c1689f7b04164fbf65271b.cortexlab-single-phase-3` -->
-
-Recordings with imposed drift at known times:
-
-* cortexlab-drift-dataset1 (see above)
-    - Manip. timestamps: `sha1://1117aac1f15e441fc82854a736e52e4b87e6d90c/dataset1/manip.timestamps_p2.npy`
-    - Manip. positions: `sha1://9d4e8e9265573707cd1890eefa50fda6a8bd8ae5/manip.positions.npy`
-* cortexlab-drift-dataset2 (see above)
-    - Manip. timestamps: `sha1://b03ea67a69cbbcba214582cf6de1154bcf6b1f92/manip.timestamps.npy`
-    - Manip. positions: `sha1://9d4e8e9265573707cd1890eefa50fda6a8bd8ae5/manip.positions.npy`
-
-The following Python snippet can be used to load the timestamps and positions of the manipulated drift
-
-```python
-# Make sure you have the kachery-p2p daemon running
-import kachery_p2p as kp
-
-# Note: these are from cortexlab-drift-dataset1
-timestamps_uri = 'sha1://1117aac1f15e441fc82854a736e52e4b87e6d90c/dataset1/manip.timestamps_p2.npy'
-positions_uri = 'sha1://9d4e8e9265573707cd1890eefa50fda6a8bd8ae5/manip.positions.npy'
-
-timestamps = kp.load_npy(timestamps_uri).squeeze()
-positions = kp.load_npy(positions_uri).squeeze()
-
-print(timestamps) # array of shape (22,) [0, 580.1500031, ...]
-print(positions) # array of shape (22,) [0, 0, 50, 0, 50, ...]
-```
-
-
-## Data from Josh Siegle
-
-Notes about the Allen Institute curated sorting output:
-
-Units were selected based on the following criteria:
-```
-ISI violations < 0.01
-amplitude cutoff < 0.01
-presence ratio >= 0.99
-nearest-neighbors hit rate > 0.96
-SNR > 3.0
-```
-
-Each unit was then manually inspected to confirm its quality.
-
-There were a total of 76 high-quality units across both datasets.
 
