@@ -23,15 +23,17 @@ with hi.RemoteJobHandler(compute_resource_uri=compute_resource_uri) as jh:
         le_recordings1, le_sortings1 = prepare_cortexlab_datasets()
         le_recordings2 = prepare_cortexlab_drift_datasets()
         le_recordings3, le_sortings3 = prepare_allen_datasets()
-        le_recordings4, le_sortings4 = prepare_svoboda_datasets()
+        le_recordings4, le_sortings4, le_curation_actions4 = prepare_svoboda_datasets()
         hi.wait()
 
 le_recordings = le_recordings1 + le_recordings2 + le_recordings3 + le_recordings4
 le_sortings = le_sortings1 + le_sortings3 + le_sortings4
+le_curation_actions = le_curation_actions4
 
 try:
     f = kp.create_feed()
     recordings = f.get_subfeed(dict(documentId='default', key='recordings'))
+    sortings = f.get_subfeed(dict(documentId='default', key='sortings'))
     for le_recording in le_recordings:
         recordings.append_message(dict(
             action=dict(
@@ -40,13 +42,20 @@ try:
             )
         ))
     for le_sorting in le_sortings:
-        recordings.append_message(dict(
+        sortings.append_message(dict(
             action=dict(
                 type='ADD_SORTING',
                 sorting=le_sorting
             )
         ))
-    x = f.create_snapshot([dict(documentId='default', key='recordings')])
+    for action in le_curation_actions:
+        sortings.append_message(dict(
+            action=action
+        ))
+    x = f.create_snapshot([
+        dict(documentId='default', key='recordings'),
+        dict(documentId='default', key='sortings')
+    ])
     print(x.get_uri())
 finally:
     f.delete()

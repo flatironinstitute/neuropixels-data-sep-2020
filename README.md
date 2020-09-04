@@ -34,31 +34,31 @@ development. Over time the responsiveness will improve. Thank you for your patie
 
 <!-- BEGIN DATA TABLE -->
 
-<!--- Auto-generated at 09/03/2020, 07:49:55-->
+<!--- Auto-generated at 09/04/2020, 06:07:11-->
 | Recording ID | Web link | Description |
 |------ | ---- | ----------- |
-| cortexlab-single-phase-3 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | A "Phase3" Neuropixels electrode array was inserted into the brain of an awake, head-fixed mouse for about an hour. |
-| cortexlab-single-phase-3.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3.10sec?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | Extracted 10 seconds of data from the beginning of the recording |
-| cortexlab-single-phase-3-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3-ch0-7.10sec?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | Extracted a subset of channels and 10 seconds of data from the beginning of the recording |
-| cortexlab-drift-dataset1 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-drift-dataset1?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | Neuropixels 2 recording with imposed drift (dataset1). |
-| cortexlab-drift-dataset2 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-drift-dataset2?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | Neuropixels 2 recording with imposed drift (dataset2). |
-| allen_mouse419112_probeE | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | A one hour neuropixels recording from Allen Institute |
-| allen_mouse415148_probeE | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse415148_probeE?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | A one hour neuropixels recording from Allen Institute |
-| allen_mouse419112_probeE-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-ch0-7.10sec?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | Subset of channels and first 10 seconds of allen_mouse419112_probeE |
-| allen_mouse419112_probeE-10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-10sec?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | First 10 seconds of allen_mouse419112_probeE |
-| svoboda-SC026_080619_g0_tcat | [view](http://ephys1.laboratorybox.org/default/recording/svoboda-SC026_080619_g0_tcat?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | A Phase 3B Neuropixels probe was inserted 2.9 mm into secondary motor cortex of an awake, head-fixed mouse performing a trial-based behavioural task. |
+| cortexlab-single-phase-3 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | A "Phase3" Neuropixels electrode array was inserted into the brain of an awake, head-fixed mouse for about an hour. |
+| cortexlab-single-phase-3.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3.10sec?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | Extracted 10 seconds of data from the beginning of the recording |
+| cortexlab-single-phase-3-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3-ch0-7.10sec?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | Extracted a subset of channels and 10 seconds of data from the beginning of the recording |
+| cortexlab-drift-dataset1 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-drift-dataset1?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | Neuropixels 2 recording with imposed drift (dataset1). |
+| cortexlab-drift-dataset2 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-drift-dataset2?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | Neuropixels 2 recording with imposed drift (dataset2). |
+| allen_mouse419112_probeE | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | A one hour neuropixels recording from Allen Institute |
+| allen_mouse415148_probeE | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse415148_probeE?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | A one hour neuropixels recording from Allen Institute |
+| allen_mouse419112_probeE-ch0-7.10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-ch0-7.10sec?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | Subset of channels and first 10 seconds of allen_mouse419112_probeE |
+| allen_mouse419112_probeE-10sec | [view](http://ephys1.laboratorybox.org/default/recording/allen_mouse419112_probeE-10sec?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | First 10 seconds of allen_mouse419112_probeE |
+| svoboda-SC026_080619_g0_tcat_imec0 | [view](http://ephys1.laboratorybox.org/default/recording/svoboda-SC026_080619_g0_tcat_imec0?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | A Phase 3B Neuropixels probe was inserted 2.9 mm into secondary motor cortex of an awake, head-fixed mouse performing a trial-based behavioural task. |
 
 
 | Sorting ID | Web link | Description |
 |------ | ---- | ----------- |
-| cortexlab-single-phase-3:curated | [view](http://ephys1.laboratorybox.org/default/sorting/cortexlab-single-phase-3:curated?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | Curated spike sorting for cortexlab-single-phase-3 |
-| cortexlab-single-phase-3:curated_good | [view](http://ephys1.laboratorybox.org/default/sorting/cortexlab-single-phase-3:curated_good?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | Curated spike sorting for cortexlab-single-phase-3 (good units only) |
-| allen_mouse419112_probeE:curated | [view](http://ephys1.laboratorybox.org/default/sorting/allen_mouse419112_probeE:curated?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | Curated spike sorting for allen_mouse419112_probeE |
-| allen_mouse415148_probeE:curated | [view](http://ephys1.laboratorybox.org/default/sorting/allen_mouse415148_probeE:curated?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | Curated spike sorting for allen_mouse415148_probeE |
-| svoboda-SC026_080619_g0_tcat:curated | [view](http://ephys1.laboratorybox.org/default/sorting/svoboda-SC026_080619_g0_tcat:curated?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json) | Curated spike sorting for svoboda-SC026_080619_g0_tcat |
+| cortexlab-single-phase-3:curated | [view](http://ephys1.laboratorybox.org/default/sorting/cortexlab-single-phase-3:curated?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | Curated spike sorting for cortexlab-single-phase-3 |
+| cortexlab-single-phase-3:curated_good | [view](http://ephys1.laboratorybox.org/default/sorting/cortexlab-single-phase-3:curated_good?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | Curated spike sorting for cortexlab-single-phase-3 (good units only) |
+| allen_mouse419112_probeE:curated | [view](http://ephys1.laboratorybox.org/default/sorting/allen_mouse419112_probeE:curated?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | Curated spike sorting for allen_mouse419112_probeE |
+| allen_mouse415148_probeE:curated | [view](http://ephys1.laboratorybox.org/default/sorting/allen_mouse415148_probeE:curated?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | Curated spike sorting for allen_mouse415148_probeE |
+| svoboda-SC026_080619_g0_tcat_imec0:curated | [view](http://ephys1.laboratorybox.org/default/sorting/svoboda-SC026_080619_g0_tcat_imec0:curated?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json) | Curated spike sorting for svoboda-SC026_080619_g0_tcat_imec0 |
 
 
-[Browse all recordings](http://ephys1.laboratorybox.org/default?feed=sha1://88eb8b5805adb6c87bfc6ab27d2b3784586a882e/feed.json)
+[Browse all recordings](http://ephys1.laboratorybox.org/default?feed=sha1://ee3ba993d1d5fb9135973eadad7c0b757619d0a0/feed.json)
 <!-- END DATA TABLE -->
 
 ## Loading into **Python** and exporting to various formats
