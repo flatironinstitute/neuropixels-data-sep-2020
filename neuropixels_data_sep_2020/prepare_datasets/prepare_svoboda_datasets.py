@@ -16,7 +16,7 @@ def prepare_svoboda_datasets():
     # data.mat file contains spike timing, cluster identify, site map, etc.
     # information. 
     # .meta file includes recording metadata, and CatGT parameters. 
-    recording_obj_dataset1, sorting_obj_dataset1 = prepare_recording(
+    recording_obj_dataset1, sorting_obj_dataset1, unit_notes_dataset1 = prepare_recording(
         bin_uri='sha1://f94ac8b42c423e551ad461f57c1cecf6cd5bc9d2/SC026_080619_g0_tcat.imec0.ap.bin?manifest=c3f82c2d10106b3739fca0ecb298c7330b6df72a',
         bin_file_size=76029609548,
         raw_num_channels=302,
@@ -26,9 +26,9 @@ def prepare_svoboda_datasets():
 
     le_recordings = []
     le_recordings.append(dict(
-        recordingId='svoboda-SC026_080619_g0_tcat',
-        recordingLabel='svoboda-SC026_080619_g0_tcat',
-        recordingPath=ka.store_object(recording_obj_dataset1, basename='svoboda-SC026_080619_g0_tcat.json'),
+        recordingId='svoboda-SC026_080619_g0_tcat_imec0',
+        recordingLabel='svoboda-SC026_080619_g0_tcat_imec0',
+        recordingPath=ka.store_object(recording_obj_dataset1, basename='svoboda-SC026_080619_g0_tcat_imec0.json'),
         recordingObject=recording_obj_dataset1,
         description='''
         A Phase 3B Neuropixels probe was inserted 2.9 mm into secondary motor cortex of an awake, head-fixed mouse performing a trial-based behavioural task.
@@ -37,21 +37,31 @@ def prepare_svoboda_datasets():
 
     le_sortings = []
     le_sortings.append(dict(
-        sortingId='svoboda-SC026_080619_g0_tcat:curated',
-        sortingLabel='svoboda-SC026_080619_g0_tcat:curated',
-        sortingPath=ka.store_object(sorting_obj_dataset1, basename='svoboda-SC026_080619_g0_tcat-curated.json'),
+        sortingId='svoboda-SC026_080619_g0_tcat_imec0:curated',
+        sortingLabel='svoboda-SC026_080619_g0_tcat_imec0:curated',
+        sortingPath=ka.store_object(sorting_obj_dataset1, basename='svoboda-SC026_080619_g0_tcat_imec0-curated.json'),
         sortingObject=sorting_obj_dataset1,
 
-        recordingId='svoboda-SC026_080619_g0_tcat',
-        recordingPath=ka.store_object(recording_obj_dataset1, basename='svoboda-SC026_080619_g0_tcat.json'),
+        recordingId='svoboda-SC026_080619_g0_tcat_imec0',
+        recordingPath=ka.store_object(recording_obj_dataset1, basename='svoboda-SC026_080619_g0_tcat_imec0.json'),
         recordingObject=recording_obj_dataset1,
 
         description='''
-        Curated spike sorting for svoboda-SC026_080619_g0_tcat
+        Curated spike sorting for svoboda-SC026_080619_g0_tcat_imec0
         '''.strip()
     ))
 
-    return le_recordings, le_sortings
+    le_curation_actions = []
+    for unit_id, notes in unit_notes_dataset1.items():
+        for note in notes:
+            le_curation_actions.append(dict(
+                type='ADD_UNIT_LABEL',
+                sortingId='svoboda-SC026_080619_g0_tcat_imec0:curated',
+                unitId=unit_id,
+                label=note
+            ))
+
+    return le_recordings, le_sortings, le_curation_actions
 
 def prepare_recording(
         *,
@@ -61,8 +71,8 @@ def prepare_recording(
         mat_uri,
         meta_uri
 ):
-    samplerate, chanmap, xcoords, ycoords, spike_times, spike_labels = load_info_from_mat(mat_uri)
-    
+    samplerate, chanmap, xcoords, ycoords, spike_times, spike_labels, unit_notes = load_info_from_mat(mat_uri)
+
     # exclude clusters 0 and -1
     spike_inds = np.where(spike_labels > 0)[0]
     spike_times = spike_times[spike_inds]
@@ -105,13 +115,15 @@ def prepare_recording(
             channel_positions=channel_positions
         )
     )
-    return recording_object, sorting_object
+
+    return recording_object, sorting_object, unit_notes
 
 def load_info_from_mat(uri_mat):
     m = sio.loadmat(kp.load_file(uri_mat))
     print(m.keys())
     spike_times = m['spikeTimes'].squeeze()
     spike_labels = m['spikeClusters'].squeeze()
+    cluster_notes = m['clusterNotes'].squeeze()
     samplerate = m['SampleRate'][0][0]
     siteMap = m['siteMap'].squeeze()
     xcoords = m['xcoords'].squeeze()
@@ -122,6 +134,13 @@ def load_info_from_mat(uri_mat):
     num_chan = len(chanmap)
     assert len(xcoords) == num_chan
     assert len(ycoords) == num_chan
-    return samplerate, chanmap, xcoords, ycoords, spike_times, spike_labels
+    
+    unit_notes = {}
+    for j in range(len(cluster_notes)):
+        notes = [note for note in cluster_notes[j] if isinstance(note, str)]
+        if len(notes) > 0:
+            unit_notes[j+1] = notes
+    
+    return samplerate, chanmap, xcoords, ycoords, spike_times, spike_labels, unit_notes
 
 
