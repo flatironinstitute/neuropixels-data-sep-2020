@@ -50,8 +50,8 @@ def prepare_allen_datasets():
     )
 
     times2_npy_uri = 'sha1://4c717829e3ce6530349a38bd5f72fac216916276/curated_unit_times.npy?manifest=557d7cf852892b6f333b9355a3ea2293558b2a29'
-    labels2_npy_uri = 'sha1://7f2079292b1ef29264b9152073d09dfa3b4dcbe7/curated_unit_channels.npy?manifest=2b35e2b83c9af0431b8aa1ab69e1846e21f24668'
-    unit_channels2_npy_uri = 'sha1://f55da958a7725edf8bde63eecf1d53edcb9de76d/curated_unit_IDs.npy?manifest=e028ca15c01ea5f53e2bd341ab001741e7842084'
+    labels2_npy_uri = 'sha1://f55da958a7725edf8bde63eecf1d53edcb9de76d/curated_unit_IDs.npy?manifest=e028ca15c01ea5f53e2bd341ab001741e7842084'
+    unit_channels2_npy_uri = 'sha1://7f2079292b1ef29264b9152073d09dfa3b4dcbe7/curated_unit_channels.npy?manifest=2b35e2b83c9af0431b8aa1ab69e1846e21f24668'
     S2 = dict(
         sorting_format='npy1',
         data=dict(
@@ -122,7 +122,7 @@ def prepare_allen_datasets():
         recordingObject=XX2,
 
         description='''
-        Curated spike sorting for allen_mouse415148_probeE
+        Curated spike sorting for allen_mouse415148_probeE **Updated 9 Sep 2020**
         '''.strip()
     ))
     le_recordings.append(dict(
