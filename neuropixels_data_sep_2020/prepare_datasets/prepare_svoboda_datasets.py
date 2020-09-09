@@ -5,58 +5,170 @@ import numpy as np
 from ..uploader import upload_files_to_compute_resource
 
 def prepare_svoboda_datasets():
-    # A Phase 3B Neuropixels probe was inserted 2.9 mm into secondary motor cortex of an awake,
-    # head-fixed mouse performing a trial-based behavioural task. Overall 302 channels were
-    # recorded using open source software SpikeGLX. The raw file is in 16bit integer format,
-    # with the first 301 channels recorded in AP band, and the last channel for synchronization
-    # purpose. 
-    # After global demuxing and concatenation of trial-based recording into a continuous one using
-    # CatGT, the recording was spike-sorted automatically by Kilosort2 and manually curated in
-    # JRCLUST GUI. In total, 201 single units were identified.
-    # data.mat file contains spike timing, cluster identify, site map, etc.
-    # information. 
-    # .meta file includes recording metadata, and CatGT parameters. 
-    recording_obj_dataset1, sorting_obj_dataset1, unit_notes_dataset1 = prepare_recording(
+    le_recordings = []
+    le_sortings = []
+    le_curation_actions = []
+
+    # svoboda-SC026_080619_g0_tcat_imec0
+    recording_obj, sorting_obj, unit_notes = prepare_recording(
         bin_uri='sha1://f94ac8b42c423e551ad461f57c1cecf6cd5bc9d2/SC026_080619_g0_tcat.imec0.ap.bin?manifest=c3f82c2d10106b3739fca0ecb298c7330b6df72a',
         bin_file_size=76029609548,
         raw_num_channels=302,
         mat_uri='sha1://bb21a7cc8b9e409cd61ed1fc521937f72797ddad/data.mat?manifest=a736aa493def3770401301b9d2a946fd6fe5aff3',
-        meta_uri='sha1://5f19fdf70696cf85b76208e41f08c0ac6b7e1e03/SC026_080619_g0_tcat.imec0.ap.meta' # perhaps will use in future
+        meta_uri='sha1://5f19fdf70696cf85b76208e41f08c0ac6b7e1e03/SC026_080619_g0_tcat.imec0.ap.meta', # perhaps will use in future
+        single_only=True
     )
-
-    le_recordings = []
     le_recordings.append(dict(
         recordingId='svoboda-SC026_080619_g0_tcat_imec0',
         recordingLabel='svoboda-SC026_080619_g0_tcat_imec0',
-        recordingPath=ka.store_object(recording_obj_dataset1, basename='svoboda-SC026_080619_g0_tcat_imec0.json'),
-        recordingObject=recording_obj_dataset1,
+        recordingPath=ka.store_object(recording_obj, basename='svoboda-SC026_080619_g0_tcat_imec0.json'),
+        recordingObject=recording_obj,
         description='''
         A Phase 3B Neuropixels probe was inserted 2.9 mm into secondary motor cortex of an awake, head-fixed mouse performing a trial-based behavioural task.
         '''.strip()
     ))
-
-    le_sortings = []
     le_sortings.append(dict(
         sortingId='svoboda-SC026_080619_g0_tcat_imec0:curated',
         sortingLabel='svoboda-SC026_080619_g0_tcat_imec0:curated',
-        sortingPath=ka.store_object(sorting_obj_dataset1, basename='svoboda-SC026_080619_g0_tcat_imec0-curated.json'),
-        sortingObject=sorting_obj_dataset1,
+        sortingPath=ka.store_object(sorting_obj, basename='svoboda-SC026_080619_g0_tcat_imec0-curated.json'),
+        sortingObject=sorting_obj,
 
         recordingId='svoboda-SC026_080619_g0_tcat_imec0',
-        recordingPath=ka.store_object(recording_obj_dataset1, basename='svoboda-SC026_080619_g0_tcat_imec0.json'),
-        recordingObject=recording_obj_dataset1,
+        recordingPath=ka.store_object(recording_obj, basename='svoboda-SC026_080619_g0_tcat_imec0.json'),
+        recordingObject=recording_obj,
 
         description='''
         Curated spike sorting for svoboda-SC026_080619_g0_tcat_imec0
         '''.strip()
     ))
-
-    le_curation_actions = []
-    for unit_id, notes in unit_notes_dataset1.items():
+    for unit_id, notes in unit_notes.items():
         for note in notes:
             le_curation_actions.append(dict(
                 type='ADD_UNIT_LABEL',
                 sortingId='svoboda-SC026_080619_g0_tcat_imec0:curated',
+                unitId=unit_id,
+                label=note
+            ))
+
+    # svoboda-SC022_030319_g0_tcat_imec2
+    recording_obj, sorting_obj, unit_notes = prepare_recording(
+        bin_uri='sha1://9e7e76e467a28454ad9b76d29cb99d5330fffd5b/SC022_030319_g0_tcat.imec2.ap.bin?manifest=fc0b2783b88b61a5b84ac7a3dbd7fd9984557805',
+        bin_file_size=112205135350,
+        raw_num_channels=385,
+        mat_uri='sha1://a7c467b959a66f072b5aa6ef7c13d9118b26942b/SC022_030319_g0_tcat.imec2.ap.mat?manifest=0970f173ad47c76212f4f16dd028d0850cda8745',
+        meta_uri='sha1://a2bc30784266288cd6bd0b8c861dd182e538ed3c/SC022_030319_g0_tcat.imec2.ap.meta', # perhaps will use in future
+        single_only=True
+    )
+    le_recordings.append(dict(
+        recordingId='svoboda-SC022_030319_g0_tcat_imec2',
+        recordingLabel='svoboda-SC022_030319_g0_tcat_imec2',
+        recordingPath=ka.store_object(recording_obj, basename='svoboda-SC022_030319_g0_tcat_imec2.json'),
+        recordingObject=recording_obj,
+        description='''
+        A Phase 3B Neuropixels probe was inserted 4.5 mm into left hemisphere striatum of an awake, head-fixed mouse performing a trial-based behavioural task.
+        '''.strip()
+    ))
+    le_sortings.append(dict(
+        sortingId='svoboda-SC022_030319_g0_tcat_imec2:curated',
+        sortingLabel='svoboda-SC022_030319_g0_tcat_imec2:curated',
+        sortingPath=ka.store_object(sorting_obj, basename='svoboda-SC022_030319_g0_tcat_imec2-curated.json'),
+        sortingObject=sorting_obj,
+
+        recordingId='svoboda-SC022_030319_g0_tcat_imec2',
+        recordingPath=ka.store_object(recording_obj, basename='svoboda-SC022_030319_g0_tcat_imec2.json'),
+        recordingObject=recording_obj,
+
+        description='''
+        Curated spike sorting for svoboda-SC022_030319_g0_tcat_imec2
+        '''.strip()
+    ))
+    for unit_id, notes in unit_notes.items():
+        for note in notes:
+            le_curation_actions.append(dict(
+                type='ADD_UNIT_LABEL',
+                sortingId='svoboda-SC022_030319_g0_tcat_imec2:curated',
+                unitId=unit_id,
+                label=note
+            ))
+    
+    # svoboda-SC026_080619_g0_tcat_imec2
+    recording_obj, sorting_obj, unit_notes = prepare_recording(
+        bin_uri='sha1://712b436030d1ab068eaf69c58172fffb261670ae/SC026_080619_g0_tcat.imec2.ap.bin?manifest=68c5ccc714a430143a435aee277f5c4209161e83',
+        bin_file_size=96925126760,
+        raw_num_channels=385,
+        mat_uri='sha1://273707a53a5eb401441cd56dafdc3187bd6ae79f/SC026_080619_g0_tcat.imec2.ap.mat?manifest=dac1ac15f32067879408fa9f693c09891f6a51c1',
+        meta_uri='sha1://1d9affa941e8953d61b9b80f4f8175b009384fa5/SC026_080619_g0_tcat.imec2.ap.meta', # perhaps will use in future
+        single_only=True
+    )
+    le_recordings.append(dict(
+        recordingId='svoboda-SC026_080619_g0_tcat_imec2',
+        recordingLabel='svoboda-SC026_080619_g0_tcat_imec2',
+        recordingPath=ka.store_object(recording_obj, basename='svoboda-SC026_080619_g0_tcat_imec2.json'),
+        recordingObject=recording_obj,
+        description='''
+        A Phase 3B Neuropixels probe was inserted 4.7 mm into the left hemisphere hippocampus&thalamus of an awake, head-fixed mouse performing a trial-based behavioural task.
+        '''.strip()
+    ))
+    le_sortings.append(dict(
+        sortingId='svoboda-SC026_080619_g0_tcat_imec2:curated',
+        sortingLabel='svoboda-SC026_080619_g0_tcat_imec2:curated',
+        sortingPath=ka.store_object(sorting_obj, basename='svoboda-SC026_080619_g0_tcat_imec2-curated.json'),
+        sortingObject=sorting_obj,
+
+        recordingId='svoboda-SC026_080619_g0_tcat_imec2',
+        recordingPath=ka.store_object(recording_obj, basename='svoboda-SC026_080619_g0_tcat_imec2.json'),
+        recordingObject=recording_obj,
+
+        description='''
+        Curated spike sorting for svoboda-SC026_080619_g0_tcat_imec2
+        '''.strip()
+    ))
+    for unit_id, notes in unit_notes.items():
+        for note in notes:
+            le_curation_actions.append(dict(
+                type='ADD_UNIT_LABEL',
+                sortingId='svoboda-SC026_080619_g0_tcat_imec2:curated',
+                unitId=unit_id,
+                label=note
+            ))
+    
+    # svoboda-SC035_011020_g0_tcat_imec0
+    recording_obj, sorting_obj, unit_notes = prepare_recording(
+        bin_uri='sha1://ec1543ce5b040e5e56901859bf208b6f0afa4bb0/SC035_011020_g0_tcat.imec0.ap.bin?manifest=5cfb7bc0670ae892b2d84b81c402e0bb543578d0',
+        bin_file_size=84952919590,
+        raw_num_channels=385,
+        mat_uri='sha1://af1e7d18def516904a7adfca9005db189a43a3ad/SC035_011020_g0_tcat.imec0.ap.mat?manifest=7709b07bca63b61e5f01644d699488dc5c121a6d',
+        meta_uri='sha1://d11e93ae6d760a3fb57da1b8d91a86d5caae7a73/SC035_011020_g0_tcat.imec0.ap.meta', # perhaps will use in future
+        single_only=True
+    )
+    le_recordings.append(dict(
+        recordingId='svoboda-SC035_011020_g0_tcat_imec0',
+        recordingLabel='svoboda-SC035_011020_g0_tcat_imec0',
+        recordingPath=ka.store_object(recording_obj, basename='svoboda-SC035_011020_g0_tcat_imec0.json'),
+        recordingObject=recording_obj,
+        description='''
+        A 2.0 4-shank Neuropixels probe was inserted 1 mm into the right hemisphere secondary motor cortex of an awake, head-fixed mouse performing a trial-based behavioural task.
+        '''.strip()
+    ))
+    le_sortings.append(dict(
+        sortingId='svoboda-SC035_011020_g0_tcat_imec0:curated',
+        sortingLabel='svoboda-SC035_011020_g0_tcat_imec0:curated',
+        sortingPath=ka.store_object(sorting_obj, basename='svoboda-SC035_011020_g0_tcat_imec0-curated.json'),
+        sortingObject=sorting_obj,
+
+        recordingId='svoboda-SC035_011020_g0_tcat_imec0',
+        recordingPath=ka.store_object(recording_obj, basename='svoboda-SC035_011020_g0_tcat_imec0.json'),
+        recordingObject=recording_obj,
+
+        description='''
+        Curated spike sorting for svoboda-SC035_011020_g0_tcat_imec0
+        '''.strip()
+    ))
+    for unit_id, notes in unit_notes.items():
+        for note in notes:
+            le_curation_actions.append(dict(
+                type='ADD_UNIT_LABEL',
+                sortingId='svoboda-SC035_011020_g0_tcat_imec0:curated',
                 unitId=unit_id,
                 label=note
             ))
@@ -69,7 +181,8 @@ def prepare_recording(
         bin_file_size,
         raw_num_channels,
         mat_uri,
-        meta_uri
+        meta_uri,
+        single_only
 ):
     samplerate, chanmap, xcoords, ycoords, spike_times, spike_labels, unit_notes = load_info_from_mat(mat_uri)
 
@@ -77,6 +190,16 @@ def prepare_recording(
     spike_inds = np.where(spike_labels > 0)[0]
     spike_times = spike_times[spike_inds]
     spike_labels = spike_labels[spike_inds]
+
+    if single_only:
+        okay_to_use = np.zeros((len(spike_times,)))
+        for unit_id, notes in unit_notes.items():
+            if 'single' in notes:
+                okay_to_use[np.where(spike_labels == unit_id)[0]] = 1
+        spike_inds = np.where(okay_to_use)[0]
+        print(f'Using {len(spike_inds)} of {len(spike_times)} events (single units only)')
+        spike_times = spike_times[spike_inds]
+        spike_labels = spike_labels[spike_inds]
 
     times_npy_uri = ka.store_npy(spike_times)
     labels_npy_uri = ka.store_npy(spike_labels)
@@ -120,7 +243,6 @@ def prepare_recording(
 
 def load_info_from_mat(uri_mat):
     m = sio.loadmat(kp.load_file(uri_mat))
-    print(m.keys())
     spike_times = m['spikeTimes'].squeeze()
     spike_labels = m['spikeClusters'].squeeze()
     cluster_notes = m['clusterNotes'].squeeze()

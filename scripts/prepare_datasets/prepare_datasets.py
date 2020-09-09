@@ -149,6 +149,6 @@ with hi.RemoteJobHandler(compute_resource_uri=compute_resource_uri) as jh:
                 recording_object=recording_object,
                 sorting_object=sorting_object
             )
-            hi.wait()
+        hi.wait()
 
 
