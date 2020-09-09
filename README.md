@@ -3,7 +3,7 @@ Example electrophysiology recordings for the purpose of developing and optimizin
 
 This repo is in preparation. We will be adding more recordings and curated sortings over time. We are also improving the reliability of the peer-to-peer file transfer as well as adding functionality to the web GUI.
 
-**Update 9 Sep 2020: Note in the table below that one of the curated sorting results has recently been corrected**
+**Update 9 Sep 2020: Note in the table below that one of the curated sorting results has recently been corrected and a few more datasets have been added.**
 
 ## Overview
 
@@ -25,7 +25,7 @@ We are very grateful for the following individuals who have contributed data to 
 * Josh Siegle (Allen Institute)
     - [Curated Neuropixels recordings](./doc/allen1.md)
 * Susu Chen (Karel Svoboda lab)
-    - [Curated Phase 3B Neuropixels recording](./doc/svoboda1.md)
+    - [Curated Neuropixels recordings](./doc/svoboda1.md)
 
 The following recordings were generated using [prepare_datasets.py](./scripts/prepare_datasets/prepare_datasets.py) (a fully reproducible [hither](https://github.com/flatironinstitute/hither) script).
 
