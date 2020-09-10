@@ -137,7 +137,7 @@ def prepare_svoboda_datasets():
         bin_uri='sha1://ec1543ce5b040e5e56901859bf208b6f0afa4bb0/SC035_011020_g0_tcat.imec0.ap.bin?manifest=5cfb7bc0670ae892b2d84b81c402e0bb543578d0',
         bin_file_size=84952919590,
         raw_num_channels=385,
-        mat_uri='sha1://af1e7d18def516904a7adfca9005db189a43a3ad/SC035_011020_g0_tcat.imec0.ap.mat?manifest=7709b07bca63b61e5f01644d699488dc5c121a6d',
+        mat_uri='sha1://dfb054655a665b5e9ad69c63a187b6da92a75c59/SC035_011020_g0_tcat.imec0.ap.2.mat?manifest=c25f9a710cdb810b833357d5aa3d64111d18ff2a',
         meta_uri='sha1://d11e93ae6d760a3fb57da1b8d91a86d5caae7a73/SC035_011020_g0_tcat.imec0.ap.meta', # perhaps will use in future
         single_only=True
     )
