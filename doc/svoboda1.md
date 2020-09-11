@@ -39,3 +39,13 @@ Overall 385 channels were recorded using open source software SpikeGLX.
 A 'horizontal stripe' across all shanks in the bottom of bank0 was recorded, i.e. each shank with 96 channels.
 
 After global demuxing and concatenation of trial-based recordings into a continuous file using CatGT, the recording was spike-sorted automatically by Kilosort2 and manually curated in JRCLUST GUI. In total, 93 single units were identified.
+
+### svoboda-SC035_010920_g0_tcat_imec1
+
+A 2.0 4-shank Neuropixels probe was inserted 4.75 mm into the left hemisphere medulla of an awake, head-fixed mouse performing a trial-based behavioural task. 
+
+Overall 385 channels were recorded using open source software SpikeGLX.
+
+A 'horizontal stripe' across all shanks in the bottom of bank0 was recorded, i.e. each shank with 96 channels.
+
+After global demuxing and concatenation of trial-based recordings into a continuous file using CatGT, the recording was spike-sorted automatically by Kilosort2 and manually curated in JRCLUST GUI. In total, 69 single units were identified.

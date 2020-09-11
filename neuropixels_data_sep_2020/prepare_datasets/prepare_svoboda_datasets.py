@@ -172,6 +172,47 @@ def prepare_svoboda_datasets():
                 unitId=unit_id,
                 label=note
             ))
+    
+    # svoboda-SC035_010920_g0_tcat_imec1
+    recording_obj, sorting_obj, unit_notes = prepare_recording(
+        bin_uri='sha1://cf2c025650d86d70381515fde10d45fcb2672771/SC035_010920_g0_tcat.imec1.ap.bin?manifest=a22aa64d9972d5901d3a66f0a8f12c406b836ba5',
+        bin_file_size=87520507690,
+        raw_num_channels=385,
+        mat_uri='sha1://b4e759aa392a0896314a635dc60ae2ac1ba8fd1c/SC035_010920_g0_tcat.imec1.ap.mat?manifest=49f19bf45aa6c26329e8fa50843fe41f80bf913b',
+        meta_uri='sha1://64300f49706a2d455b7fc0b6f17c2627623ad76f/SC035_010920_g0_tcat.imec1.ap.meta', # perhaps will use in future
+        single_only=True
+    )
+    le_recordings.append(dict(
+        recordingId='svoboda-SC035_010920_g0_tcat_imec1',
+        recordingLabel='svoboda-SC035_010920_g0_tcat_imec1',
+        recordingPath=ka.store_object(recording_obj, basename='svoboda-SC035_010920_g0_tcat_imec1.json'),
+        recordingObject=recording_obj,
+        description='''
+        A 2.0 4-shank Neuropixels probe was inserted 4.75 mm into the left hemisphere medulla of an awake, head-fixed mouse performing a trial-based behavioural task.
+        '''.strip()
+    ))
+    le_sortings.append(dict(
+        sortingId='svoboda-SC035_010920_g0_tcat_imec1:curated',
+        sortingLabel='svoboda-SC035_010920_g0_tcat_imec1:curated',
+        sortingPath=ka.store_object(sorting_obj, basename='svoboda-SC035_010920_g0_tcat_imec1-curated.json'),
+        sortingObject=sorting_obj,
+
+        recordingId='svoboda-SC035_010920_g0_tcat_imec1',
+        recordingPath=ka.store_object(recording_obj, basename='svoboda-SC035_010920_g0_tcat_imec1.json'),
+        recordingObject=recording_obj,
+
+        description='''
+        Curated spike sorting for svoboda-SC035_010920_g0_tcat_imec1
+        '''.strip()
+    ))
+    for unit_id, notes in unit_notes.items():
+        for note in notes:
+            le_curation_actions.append(dict(
+                type='ADD_UNIT_LABEL',
+                sortingId='svoboda-SC035_010920_g0_tcat_imec1:curated',
+                unitId=unit_id,
+                label=note
+            ))
 
     return le_recordings, le_sortings, le_curation_actions
 
