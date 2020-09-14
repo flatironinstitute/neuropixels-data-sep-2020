@@ -48,4 +48,6 @@ Overall 385 channels were recorded using open source software SpikeGLX.
 
 A 'horizontal stripe' across all shanks in the bottom of bank0 was recorded, i.e. each shank with 96 channels.
 
-After global demuxing and concatenation of trial-based recordings into a continuous file using CatGT, the recording was spike-sorted automatically by Kilosort2 and manually curated in JRCLUST GUI. In total, 69 single units were identified.
+After global demuxing and concatenation of trial-based recordings into a continuous file using CatGT, the recording was spike-sorted automatically by Kilosort2 and manually curated in JRCLUST GUI. In total, 70 single units were identified.
+
+Due to the prevalence of dense firing and high amplitude units in the medulla, a different set of criteria was used for manual curation. For instance, a refractory period of 1 ms and amplitude > 100 uV were used, instead of 2 ms refractory and SNR > 6.
