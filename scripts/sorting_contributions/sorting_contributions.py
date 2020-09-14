@@ -19,7 +19,7 @@ spyking_circus_sortings = {
     'allen_mouse415148_probeE': 'sha1://be9d013191dc7a5c539c61b87da6672281d00da8/file.json',
     'cortexlab-drift-dataset1': 'sha1://d618a4dfed3e8e74d980af60289a31186d962cb6/file.json',
     'cortexlab-drift-dataset2': 'sha1://9c8e813fbab74c3c463295c13aa1c6e28a74a157/file.json',
-    'svoboda-SC026_080619_g0_tcat': 'sha1://1e435f56012eb3f1b2996d04a4d40edd4d0d2968/file.json',
+    # 'svoboda-SC026_080619_g0_tcat': 'sha1://1e435f56012eb3f1b2996d04a4d40edd4d0d2968/file.json',
     'svoboda-SC022_030319_g0_tcat_imec2': 'sha1://d5eb47fad3e6d4fd73c9dbea1f3e5a431ab73d2d/file.json'
 }
 
