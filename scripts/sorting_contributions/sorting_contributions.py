@@ -4,6 +4,7 @@ import neuropixels_data_sep_2020 as nd
 import kachery as ka
 import kachery_p2p as kp
 import hither as hi
+import labbox_ephys as le
 from neuropixels_data_sep_2020.uploader import upload_files_to_compute_resource
 
 aws_url = 'http://ephys1.laboratorybox.org'
@@ -132,3 +133,17 @@ txt = '\n'.join(lines)
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 print(txt)
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+
+######################################################################################################
+print('Preparing snippets h5 files')
+with hi.RemoteJobHandler(compute_resource_uri=compute_resource_uri) as jh:
+    with hi.Config(job_handler=jh, container=True):
+        for s in le_sortings:
+            print(f'Preparing snippets h5 for {s["sortingId"]}')
+            recording_object = s['recordingObject']
+            sorting_object = s['sortingObject']
+            le.prepare_snippets_h5.run(
+                recording_object=recording_object,
+                sorting_object=sorting_object
+            )
+        hi.wait()
