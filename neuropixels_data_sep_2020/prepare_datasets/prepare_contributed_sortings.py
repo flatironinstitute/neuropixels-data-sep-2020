@@ -1,9 +1,4 @@
-import neuropixels_data_sep_2020 as nd
-import kachery as ka
 import kachery_p2p as kp
-import hither as hi
-import labbox_ephys as le
-from neuropixels_data_sep_2020.uploader import upload_files_to_compute_resource
 
 def prepare_contributed_sortings(le_recordings_by_id):
     sortings_sc = prepare_sc_sortings(le_recordings_by_id)
@@ -23,12 +18,12 @@ def prepare_sc_sortings(le_recordings_by_id):
     for recording_id, sorting_path in spyking_circus_sortings.items():
         le_recording = le_recordings_by_id[recording_id]
         print(sorting_path)
-        sorting = nd.LabboxEphysSortingExtractor(sorting_path)
+        sorting_object = kp.load_object(sorting_path)
         le_sortings.append(dict(
             sortingId=recording_id + ':spyking_circus',
             sortingLabel=recording_id + ':spyking_circus',
             sortingPath=sorting_path,
-            sortingObject=sorting.object(),
+            sortingObject=sorting_object,
 
             recordingId=recording_id,
             recordingPath=le_recording['recordingPath'],
