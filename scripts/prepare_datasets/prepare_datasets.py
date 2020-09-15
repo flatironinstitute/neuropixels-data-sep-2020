@@ -7,7 +7,7 @@ import datetime
 import os
 from pathlib import Path
 import sys
-from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_cortexlab_drift_datasets, prepare_allen_datasets, prepare_svoboda_datasets
+from neuropixels_data_sep_2020 import prepare_cortexlab_datasets, prepare_cortexlab_drift_datasets, prepare_allen_datasets, prepare_svoboda_datasets, prepare_contributed_sortings
 from neuropixels_data_sep_2020.uploader import upload_files_to_compute_resource
 import labbox_ephys as le
 
@@ -26,9 +26,15 @@ with hi.RemoteJobHandler(compute_resource_uri=compute_resource_uri) as jh:
         le_recordings4, le_sortings4, le_curation_actions4 = prepare_svoboda_datasets()
         hi.wait()
 
-le_recordings = le_recordings1 + le_recordings2 + le_recordings3 + le_recordings4
-le_sortings = le_sortings1 + le_sortings3 + le_sortings4
-le_curation_actions = le_curation_actions4
+        le_recordings = le_recordings1 + le_recordings2 + le_recordings3 + le_recordings4
+        le_sortings = le_sortings1 + le_sortings3 + le_sortings4
+        le_curation_actions = le_curation_actions4
+
+        le_recordings_by_id = {}
+        for r in le_recordings:
+            le_recordings_by_id[r['recordingId']] = r
+        contributed_sortings = prepare_contributed_sortings(le_recordings_by_id)
+        le_sortings = le_sortings + contributed_sortings
 
 try:
     f = kp.create_feed()
@@ -145,10 +151,11 @@ with hi.RemoteJobHandler(compute_resource_uri=compute_resource_uri) as jh:
             print(f'Preparing snippets h5 for {s["sortingId"]}')
             recording_object = s['recordingObject']
             sorting_object = s['sortingObject']
-            le.prepare_snippets_h5.run(
-                recording_object=recording_object,
-                sorting_object=sorting_object
-            )
+            with hi.Config(required_files=sorting_object):
+                le.prepare_snippets_h5.run(
+                    recording_object=recording_object,
+                    sorting_object=sorting_object
+                )
         hi.wait()
 
 

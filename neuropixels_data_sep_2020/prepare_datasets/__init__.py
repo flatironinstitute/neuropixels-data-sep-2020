@@ -4,3 +4,4 @@ from .prepare_cortexlab_datasets import prepare_cortexlab_datasets
 from .prepare_cortexlab_drift_datasets import prepare_cortexlab_drift_datasets
 from .prepare_allen_datasets import prepare_allen_datasets
 from .prepare_svoboda_datasets import prepare_svoboda_datasets
+from .prepare_contributed_sortings import prepare_contributed_sortings
