@@ -52,6 +52,11 @@ def prepare_mh_sortings(le_recordings_by_id):
         },
         {
             'recording_id': 'allen_mouse419112_probeE',
+            'sorter_name': 'ironclust',
+            'npz_uri': 'sha1://63f8577ee830f6e854fa37fa6dc9f300ddf5dcd2/ironclust.npz?manifest=63da49e17999ecf6082a1b7b1fcd50574a83ff57'
+        },
+        {
+            'recording_id': 'allen_mouse419112_probeE',
             'sorter_name': 'kilosort2',
             'npz_uri': 'sha1://b5cc1eed184a9cb544cd11f49141fe59e12d473c/kilosort2.npz?manifest=7d4ec32d692c9ed3b72aaefcf0c31aa0352ec95b'
         },
@@ -59,7 +64,62 @@ def prepare_mh_sortings(le_recordings_by_id):
             'recording_id': 'allen_mouse419112_probeE',
             'sorter_name': 'spykingcircus',
             'npz_uri': 'sha1://cb07e45b1b969ebfa5a29faf7156585365104349/spykingcircus.npz?manifest=1fdb0dd7642a816db185e975bf43c85fa9bb6578'
-        }
+        },
+        {
+            'recording_id': 'svoboda-SC026_080619_g0_tcat_imec0',
+            'sorter_name': 'hdsort',
+            'npz_uri': 'sha1://dda1bfa8074c4a391bd941e6a341e493a0737768/hdsort.npz?manifest=6b0b78fe3508d1ddfed26b8666df1b7d94231c69'
+        },
+        {
+            'recording_id': 'svoboda-SC026_080619_g0_tcat_imec0',
+            'sorter_name': 'herdingspikes',
+            'npz_uri': 'sha1://6136940a5e7d2beca95c35f3e000d38ce4d5e596/herdingspikes.npz?manifest=8ab6d0e2050d07f0c39e6dfb391c85513803e5ca'
+        },
+        {
+            'recording_id': 'svoboda-SC026_080619_g0_tcat_imec0',
+            'sorter_name': 'ironclust',
+            'npz_uri': 'sha1://9bd3a55848d0ca9e98f899653e9554d965dbf6f1/ironclust.npz?manifest=dbf4ed27e7ce9e3fb4e6f00166423765c16bb161'
+        },
+        {
+            'recording_id': 'svoboda-SC026_080619_g0_tcat_imec0',
+            'sorter_name': 'kilosort2',
+            'npz_uri': 'sha1://7c5100ee4cb77969a4697b524d12727315ac8f1e/kilosort2.npz?manifest=e36011dee42181fb4dcd76764658b848060a51f1'
+        },
+        {
+            'recording_id': 'svoboda-SC026_080619_g0_tcat_imec0',
+            'sorter_name': 'tridesclous',
+            'npz_uri': 'sha1://20ac56455bc10c1c42c266d1773a4a58b258786f/tridesclous.npz?manifest=400f5b9a20d0bb3575f8e98859440db38aaccca7'
+        },
+        {
+            'recording_id': 'cortexlab-single-phase-3',
+            'sorter_name': 'hdsort',
+            'npz_uri': 'sha1://d809e0ced7b37c059ee57fbda2f988a5b8dc1a55/hdsort.npz?manifest=fce43cc1a2850e0e7805a98539f24c0816a218e3'
+        },
+        {
+            'recording_id': 'cortexlab-single-phase-3',
+            'sorter_name': 'herdingspikes',
+            'npz_uri': 'sha1://6b551be075b72dfa5c8df9a43541219630821197/herdingspikes.npz?manifest=b8ece277f8520feae2056f308e3269b6bd32e7a0'
+        },
+        {
+            'recording_id': 'cortexlab-single-phase-3',
+            'sorter_name': 'ironclust',
+            'npz_uri': 'sha1://dfd2eaa009f6bc5b5c3f7eb979d0335f412cd575/ironclust.npz?manifest=0d9cedcf83a0de06be1a620777b2a5838e3c0d12'
+        },
+        {
+            'recording_id': 'cortexlab-single-phase-3',
+            'sorter_name': 'kilosort2',
+            'npz_uri': 'sha1://3cf9943dedeb5f39344672ff701eebf12830d075/kilosort2.npz?manifest=8bbe8e6a536e63a274a3bd2e05ecc03116840855'
+        },
+        {
+            'recording_id': 'cortexlab-single-phase-3',
+            'sorter_name': 'spykingcircus',
+            'npz_uri': 'sha1://d855d5314f36470719da17e4e5d2f48c808e65d3/spykingcircus.npz?manifest=af8e6189126b228ecde19237fb7a21807c7e2feb'
+        },
+        {
+            'recording_id': 'cortexlab-single-phase-3',
+            'sorter_name': 'tridesclous',
+            'npz_uri': 'sha1://927721485f61cc9322536a8e9b457088b9dc16c7/tridesclous.npz?manifest=ee127bacf3d27de75b69313920af4691dd09c309'
+        },
     ]
     le_sortings = []
     for a in x:
