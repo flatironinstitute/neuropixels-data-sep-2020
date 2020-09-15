@@ -36,7 +36,7 @@ development. Over time the responsiveness will improve. Thank you for your patie
 
 <!-- BEGIN DATA TABLE -->
 
-<!--- Auto-generated at 09/15/2020, 09:02:16-->
+<!--- Auto-generated at 09/15/2020, 11:10:39-->
 | Recording ID | Web link | Description |
 |------ | ---- | ----------- |
 | cortexlab-single-phase-3 | [view](http://ephys1.laboratorybox.org/default/recording/cortexlab-single-phase-3?feed=sha1://124a3edaccd54cada965ba21c14a9ca56615e5f2/feed.json) | A "Phase3" Neuropixels electrode array was inserted into the brain of an awake, head-fixed mouse for about an hour. |
