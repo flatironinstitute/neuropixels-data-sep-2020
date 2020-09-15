@@ -2,9 +2,8 @@ import kachery_p2p as kp
 
 def prepare_contributed_sortings(le_recordings_by_id):
     sortings_sc = prepare_sc_sortings(le_recordings_by_id)
-    #sortings_mh = prepare_mh_sortings(le_recordings_by_id)
-    #return sortings_sc + sortings_mh
-    return sortings_sc
+    sortings_mh = prepare_mh_sortings(le_recordings_by_id)
+    return sortings_sc + sortings_mh
 
 def prepare_sc_sortings(le_recordings_by_id):
     spyking_circus_sortings = {
