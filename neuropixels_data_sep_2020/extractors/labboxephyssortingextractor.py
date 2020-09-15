@@ -87,6 +87,15 @@ class LabboxEphysSortingExtractor(se.SortingExtractor):
             S.set_sampling_frequency(samplerate)
             S.set_times_labels(times_npy.ravel(), labels_npy.ravel())
             self._sorting = S            
+        elif sorting_format == 'npy2':
+            npz = kp.load_npy(data['npz_uri'])
+            times_npy = npz['spike_indices']
+            labels_npy = npz['spike_labels']
+            samplerate = float(npz['sampling_frequency'])
+            S = se.NumpySortingExtractor()
+            S.set_sampling_frequency(samplerate)
+            S.set_times_labels(times_npy.ravel(), labels_npy.ravel())
+            self._sorting = S
         else:
             raise Exception(f'Unexpected sorting format: {sorting_format}')
 
