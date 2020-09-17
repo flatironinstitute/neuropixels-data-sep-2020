@@ -30,7 +30,7 @@ class MdaRecordingExtractor(RecordingExtractor):
             self._samplerate = samplerate
         
         if download:
-            path0 = kp.load_file(path=self._timeseries_path)
+            path0 = kp.load_file(self._timeseries_path)
             if not path0:
                 raise Exception('Unable to download file: ' + self._timeseries_path)
         else:
