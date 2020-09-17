@@ -4,14 +4,21 @@ import spikeextractors as se
 
 # Here's the URI pointing to the spikeforest data
 # Note: Right now it only contains a small subset of the data, the URI will get updated
+# This one will load just three of the PAIRED_ENGLISH recordings
 SF_STUDY_SETS_URI = 'sha1://9a00ff43117879d8c2248622ad7d925ab1a38f8d/spikeforest_study_sets.json'
+
+# This one will load all of the PAIRED_ENGLISH recordings:
+# SF_STUDY_SETS_URI = 'sha1://e92c3a88aa6173bd891aad69140fec228f2a7ffa/spikeforest_study_sets.json'
+
+# This one will load all of the PAIRED_* recordings
+# SF_STUDY_SETS_URI = 'sha1://44ac86a2dcc233e6471f24e8891bffd0e13c188f/spikeforest_study_sets.json'
+
+# For now, only focus on one study set
+study_sets_to_load = ['PAIRED_ENGLISH']
 
 def main():
     # Load json containing info for spikeforest data
     spikeforest_study_sets = kp.load_object(SF_STUDY_SETS_URI)
-
-    # For now, only focus on one study set
-    study_sets_to_load = ['PAIRED_ENGLISH']
 
     # Iterate through the study sets
     study_sets = spikeforest_study_sets['studysets']

@@ -2,11 +2,18 @@ import numpy as np
 import kachery_p2p as kp
 import kachery as ka
 
+
+study_set_names = [
+    'PAIRED_BOYDEN', 'PAIRED_CRCNS_HC1',
+    'PAIRED_ENGLISH', 'PAIRED_KAMPFF',
+    'PAIRED_MEA64C_YGER', 'PAIRED_MONOTRODE'
+]
+
 def main():
     SF_STUDY_SETS = kp.load_object('sha1://54d9ed77a2aa788b9ab67977476c2b51adb8a2c5/studysets.json')['StudySets']
     STUDY_SETS = []
     for SF_STUDY_SET in SF_STUDY_SETS:
-        if SF_STUDY_SET['name'] == 'PAIRED_ENGLISH':
+        if SF_STUDY_SET['name'] in study_set_names:
             STUDY_SET = {
                 'name': SF_STUDY_SET['name'],
                 'info': SF_STUDY_SET['info'],
