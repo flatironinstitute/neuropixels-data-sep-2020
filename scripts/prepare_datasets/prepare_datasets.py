@@ -12,7 +12,7 @@ from neuropixels_data_sep_2020.uploader import upload_files_to_compute_resource
 import labbox_ephys as le
 
 aws_url = 'http://ephys1.laboratorybox.org'
-compute_resource_uri = 'feed://09b27ce6c71add9fe6effaf351fce98d867d6fa002333a8b06565b0a108fb0ba?name=ephys1'
+compute_resource_uri = 'feed://1afa93d013bb6a5f68e87186c6bd43e11cefb9da2fddc8837c30a47c1a7bf72f?name=ephys1'
 
 #jc = hi.JobCache(use_tempdir=True)
 jc = None
