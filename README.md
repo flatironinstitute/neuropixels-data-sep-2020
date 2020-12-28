@@ -127,6 +127,15 @@ For subsequent updates, run `git pull` and rerun the `pip install -e .`
 
 **Step 2.** You must be running a kachery-p2p daemon on the `flatiron3` channel.
 
+First create a directory for storing downloaded files and set the KACHERY_STORAGE_DIR environment variable:
+```
+mkdir /desired/file/storage/location
+export KACHERY_STORAGE_DIR=/desired/file/storage/location
+# also add that to .bashrc or wherever you keep your env vars
+```
+
+Then start the daemon:
+
 ```python
 # You can replace $HOSTNAME with any other label for your node
 kachery-p2p-start-daemon --config https://gist.githubusercontent.com/magland/637ad8be96f8bbf5a86ae1f409ab751c/raw/flatiron3.yaml --label $HOSTNAME
