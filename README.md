@@ -125,11 +125,11 @@ If using conda, be sure that you always activate the conda environment prior to 
 
 For subsequent updates, run `git pull` and rerun the `pip install -e .`
 
-**Step 2.** You must be running a kachery-p2p daemon on the `flatiron1` channel.
+**Step 2.** You must be running a kachery-p2p daemon on the `flatiron3` channel.
 
 ```python
 # You can replace $HOSTNAME with any other label for your node
-kachery-p2p-start-daemon --channel flatiron1 --label $HOSTNAME
+kachery-p2p-start-daemon --config https://gist.githubusercontent.com/magland/637ad8be96f8bbf5a86ae1f409ab751c/raw/flatiron3.yaml --label $HOSTNAME
 ```
 
 Keep this daemon running in a terminal. You may want to use tmux or a similar tool to keep this daemon running even if the terminal is closed.
@@ -141,7 +141,7 @@ For more information, [see these instructions](https://github.com/flatironinstit
 ```python
 #!/usr/bin/env python3
 
-# You need to be running the kachery-p2p daemon, flatiron1 channel
+# You need to be running the kachery-p2p daemon, flatiron3 channel
 import neuropixels_data_sep_2020 as nd
 import spikeextractors as se
 
