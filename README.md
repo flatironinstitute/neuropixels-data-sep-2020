@@ -128,7 +128,8 @@ For subsequent updates, run `git pull` and rerun the `pip install -e .`
 **Step 2.** You must be running a kachery-p2p daemon on the `flatiron1` channel.
 
 ```python
-kachery-p2p-start-daemon --channel flatiron1
+# You can replace $HOSTNAME with any other label for your node
+kachery-p2p-start-daemon --channel flatiron1 --label $HOSTNAME
 ```
 
 Keep this daemon running in a terminal. You may want to use tmux or a similar tool to keep this daemon running even if the terminal is closed.
